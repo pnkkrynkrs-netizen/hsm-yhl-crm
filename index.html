@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0b1830">
+<title>HSM & YHL CRM</title>
+<style>
+:root{--navy:#0b1830;--gold:#c9a45c;--bg:#f4f6f9;--card:#fff;--text:#142033;--muted:#718096;--line:#e3e7ed;--ok:#15803d;--warn:#b7791f;--red:#c0392b}
+*{box-sizing:border-box}html,body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif;-webkit-tap-highlight-color:transparent}
+body{padding-bottom:88px}.app{max-width:760px;margin:auto}.top{background:var(--navy);color:#fff;padding:calc(18px + env(safe-area-inset-top)) 18px 18px;position:sticky;top:0;z-index:4}.toprow{display:flex;align-items:center;justify-content:space-between}.logo{font-weight:800;font-size:21px;letter-spacing:.5px}.logo small{display:block;color:var(--gold);font-size:10px;letter-spacing:1.4px;margin-top:2px}.offline{font-size:10px;background:#143653;border:1px solid #2a5270;border-radius:20px;padding:6px 9px}.content{padding:15px}.title{font-size:25px;font-weight:800;margin:4px 0}.subtitle{font-size:13px;color:var(--muted);margin-bottom:15px}.cards{display:grid;grid-template-columns:1fr 1fr;gap:10px}.card{background:var(--card);border:1px solid var(--line);border-radius:15px;padding:15px;box-shadow:0 4px 16px #00000007}.metric{font-size:22px;font-weight:800;margin-top:5px}.label{font-size:11px;color:var(--muted)}.section{background:#fff;border:1px solid var(--line);border-radius:15px;padding:15px;margin:12px 0}.section h2{font-size:16px;margin:0 0 12px}.btn{border:0;border-radius:11px;padding:12px 14px;font-weight:750;font-size:14px;background:var(--navy);color:#fff;min-height:44px;cursor:pointer}.gold{background:var(--gold);color:#101010}.light{background:#edf1f5;color:#253244}.danger{background:#fdebea;color:var(--red)}.toolbar{display:flex;gap:8px;overflow:auto;margin-bottom:12px}.toolbar .btn{white-space:nowrap}.search{margin-bottom:10px}input,select,textarea{width:100%;border:1px solid #d8dee7;border-radius:11px;padding:12px;font:inherit;background:#fff;color:var(--text);font-size:16px}textarea{min-height:88px}.formgrid{display:grid;gap:11px}label{display:block;font-size:12px;font-weight:700;color:#5d6978;margin:0 0 5px}.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}.list{display:grid;gap:9px}.item{background:#fff;border:1px solid var(--line);border-radius:13px;padding:13px}.itemhead{display:flex;justify-content:space-between;gap:8px}.item b{font-size:14px}.meta{font-size:12px;color:var(--muted);margin-top:5px;line-height:1.45}.pill{display:inline-block;border-radius:20px;padding:5px 8px;font-size:10px;font-weight:800;background:#eef1f5}.ok{background:#e8f7ee;color:var(--ok)}.warn{background:#fff4dc;color:var(--warn)}.red{background:#fdebea;color:var(--red)}.bottom{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px solid var(--line);z-index:10;padding:7px 4px calc(7px + env(safe-area-inset-bottom));display:grid;grid-template-columns:repeat(6,1fr);max-width:760px;margin:auto}.navbtn{border:0;background:transparent;color:#667085;font-size:9px;padding:5px 1px;cursor:pointer}.navbtn .ico{font-size:19px;display:block;margin-bottom:2px}.navbtn.active{color:var(--navy);font-weight:800}.fab{position:fixed;right:18px;bottom:95px;width:54px;height:54px;border:0;border-radius:50%;background:var(--gold);font-size:27px;box-shadow:0 8px 22px #0003;z-index:5;cursor:pointer}.modal{position:fixed;inset:0;background:#0008;z-index:20;display:none;align-items:flex-end}.modal.open{display:flex}.sheet{background:#fff;width:100%;max-height:92vh;overflow:auto;border-radius:20px 20px 0 0;padding:18px 16px calc(20px + env(safe-area-inset-bottom))}.sheethead{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}.x{border:0;border-radius:50%;width:36px;height:36px;font-size:22px}.empty{text-align:center;color:var(--muted);padding:24px 10px;font-size:13px}.note{font-size:12px;background:#fff8e7;border:1px solid #efdfb2;padding:11px;border-radius:11px;color:#6a571f;line-height:1.4}.hidden{display:none}.financial{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}.finbox{background:#f7f8fa;border-radius:11px;padding:10px}.finbox .flabel{font-size:10px;color:var(--muted)}.finbox .fvalue{font-size:16px;font-weight:800;margin-top:3px}.profit{background:#e8f7ee}.loss{background:#fdebea}.commission-row{background:#f7f8fa;border-radius:12px;padding:10px;margin-bottom:8px}.commission-row strong{display:block;font-size:13px;margin-bottom:7px}.small{font-size:11px;color:var(--muted)}.total-highlight{background:var(--navy);color:#fff;border-radius:15px;padding:16px;margin:12px 0}.total-highlight .big{font-size:26px;font-weight:800}.total-highlight .small{color:#cbd5e1}.ratebox{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px;margin-top:8px}.ratebox h3{font-size:14px;margin:0 0 10px}.rate-item{display:grid;grid-template-columns:1fr 92px 42px;gap:7px;align-items:center;margin-bottom:7px}.rate-item:last-child{margin-bottom:0}.rate-item input,.rate-item select{font-size:14px;padding:9px}.iconbtn{border:0;border-radius:9px;background:#fdebea;color:var(--red);height:40px;cursor:pointer}.type-tag{font-size:10px;color:var(--muted);margin-top:3px}@media(max-width:390px){.navbtn{font-size:8px}.navbtn .ico{font-size:18px}.rate-item{grid-template-columns:1fr 78px 38px}}
+</style>
+</head>
+<body>
+<div class="app">
+<header class="top"><div class="toprow"><div class="logo">HSM & YHL<small>TRAVEL CRM</small></div><div class="offline">● OFFLINE</div></div></header>
+<main id="view" class="content"></main>
+<nav class="bottom">
+<button class="navbtn active" data-p="home"><span class="ico">📊</span>Inicio</button>
+<button class="navbtn" data-p="clients"><span class="ico">👥</span>Clientes</button>
+<button class="navbtn" data-p="services"><span class="ico">✈️</span>Servicios</button>
+<button class="navbtn" data-p="payments"><span class="ico">💰</span>Pagos</button>
+<button class="navbtn" data-p="commissions"><span class="ico">💵</span>Comisiones</button>
+<button class="navbtn" data-p="more"><span class="ico">☰</span>Más</button>
+</nav>
+<button class="fab" id="fab">+</button>
+</div>
+<div class="modal" id="modal"><div class="sheet"><div class="sheethead"><b id="mtitle"></b><button class="x" onclick="closeModal()">×</button></div><div id="mbody"></div></div></div>
+
+<script>
+const KEY="hsm_yhl_mobile_v2";
+let db;
+try{db=JSON.parse(localStorage.getItem(KEY)||"null")||{};}catch{db={};}
+db.clients=db.clients||[];db.services=db.services||[];db.payments=db.payments||[];db.gestors=db.gestors||[];db.tasks=db.tasks||[];
+let pageNow="home";
+
+const save=()=>localStorage.setItem(KEY,JSON.stringify(db));
+const id=()=>crypto.randomUUID?crypto.randomUUID():Date.now()+"-"+Math.random();
+const esc=s=>String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]));
+const num=n=>Number(n)||0;
+const money=(n,c="USD")=>{try{return new Intl.NumberFormat("en-US",{style:"currency",currency:c,maximumFractionDigits:2}).format(num(n));}catch{return num(n).toFixed(2)+" "+c;}};
+const today=()=>new Date().toISOString().slice(0,10);
+const cname=cid=>db.clients.find(x=>x.id===cid)?.name||"—";
+const gname=gid=>db.gestors.find(x=>x.id===gid)?.name||"—";
+const paid=sid=>db.payments.filter(x=>x.serviceId===sid).reduce((a,x)=>a+num(x.amount),0);
+
+const SERVICE_TYPES=["Boleto","Hotel","Paquete","Visa","Rent a car","Traslado","Otro"];
+
+function normalizeGestor(g){
+  g.rates=g.rates||{};
+  return g;
+}
+db.gestors.forEach(normalizeGestor);
+
+/* ---------- Comisión por tipo de servicio ---------- */
+function defaultRateForGestor(g,type){
+  if(!g)return {type:"fixed",value:0};
+  const r=(g.rates||{})[type];
+  if(r&&typeof r==="object")return {type:r.type||"fixed",value:num(r.value)};
+  if(r!==undefined)return {type:"fixed",value:num(r)};
+  return {type:"fixed",value:0};
+}
+
+function commissionAmount(service,person){
+  if(person==="gestor"){
+    /* Compatibilidad con registros antiguos */
+    if(service.gestorCommissionValue!==undefined)
+      return service.gestorCommissionType==="percent"
+        ?num(service.total)*num(service.gestorCommissionValue)/100
+        :num(service.gestorCommissionValue);
+
+    if(service.gestorCommission!==undefined)
+      return num(service.gestorCommission);
+
+    const g=db.gestors.find(x=>x.id===service.gestorId);
+    const r=defaultRateForGestor(g,service.type);
+    return r.type==="percent"?num(service.total)*r.value/100:r.value;
+  }
+  const field=person==="yisel"?"yiselCommissionValue":"haroldCommissionValue";
+  const typeField=person==="yisel"?"yiselCommissionType":"haroldCommissionType";
+  const value=num(service[field]);
+  return service[typeField]==="percent"?num(service.total)*value/100:value;
+}
+
+function serviceFinancials(s){
+  const gestor=commissionAmount(s,"gestor");
+  const yisel=commissionAmount(s,"yisel");
+  const harold=commissionAmount(s,"harold");
+  const cost=num(s.cost),other=num(s.otherCost);
+  return {gestor,yisel,harold,cost,other,profit:num(s.total)-cost-gestor-yisel-harold-other};
+}
+
+function totals(){
+  let r={sales:0,costs:0,gestor:0,yisel:0,harold:0,other:0,profit:0};
+  db.services.forEach(s=>{r.sales+=num(s.total);const f=serviceFinancials(s);r.costs+=f.cost;r.gestor+=f.gestor;r.yisel+=f.yisel;r.harold+=f.harold;r.other+=f.other;r.profit+=f.profit;});
+  r.commissions=r.gestor+r.yisel+r.harold;return r;
+}
+
+/* ---------- Navegación ---------- */
+function go(p){pageNow=p;document.querySelectorAll(".navbtn").forEach(b=>b.classList.toggle("active",b.dataset.p===p));render();}
+document.querySelectorAll(".navbtn").forEach(b=>b.onclick=()=>go(b.dataset.p));
+document.getElementById("fab").onclick=()=>{
+  if(pageNow==="clients")return clientForm();
+  if(pageNow==="services"||pageNow==="commissions")return serviceForm();
+  if(pageNow==="payments")return paymentForm();
+  gestorForm();
+};
+function render(){
+  const v=document.getElementById("view");
+  if(pageNow==="home")home(v);
+  else if(pageNow==="clients")clients(v);
+  else if(pageNow==="services")services(v);
+  else if(pageNow==="payments")payments(v);
+  else if(pageNow==="commissions")commissions(v);
+  else more(v);
+}
+function head(t,s){return `<div class="title">${t}</div><div class="subtitle">${s}</div>`}
+
+/* ---------- Inicio ---------- */
+function home(v){
+  const sales=db.services.reduce((a,x)=>a+num(x.total),0);
+  const collected=db.payments.reduce((a,x)=>a+num(x.amount),0);
+  const pending=db.services.reduce((a,x)=>a+Math.max(0,num(x.total)-paid(x.id)),0);
+  const t=totals();
+  v.innerHTML=head("Buenos días 👋","Centro de operaciones HSM Exclusive Journeys + YHL Travels")+`
+  <div class="cards">
+    <div class="card"><div class="label">VENTAS</div><div class="metric">${money(sales)}</div></div>
+    <div class="card"><div class="label">COBRADO</div><div class="metric">${money(collected)}</div></div>
+    <div class="card"><div class="label">PENDIENTE</div><div class="metric">${money(pending)}</div></div>
+    <div class="card"><div class="label">GANANCIA</div><div class="metric">${money(t.profit)}</div></div>
+  </div>
+  <div class="section"><h2>Acciones rápidas</h2><div class="toolbar">
+    <button class="btn gold" onclick="clientForm()">+ Cliente</button>
+    <button class="btn light" onclick="serviceForm()">+ Servicio</button>
+    <button class="btn light" onclick="paymentForm()">+ Pago</button>
+  </div></div>
+  <div class="section"><h2>Resumen financiero</h2><div class="financial">
+    <div class="finbox"><div class="flabel">Costos servicio</div><div class="fvalue">${money(t.costs)}</div></div>
+    <div class="finbox"><div class="flabel">Otros costos</div><div class="fvalue">${money(t.other)}</div></div>
+    <div class="finbox"><div class="flabel">Gestores</div><div class="fvalue">${money(t.gestor)}</div></div>
+    <div class="finbox"><div class="flabel">Yisel</div><div class="fvalue">${money(t.yisel)}</div></div>
+    <div class="finbox"><div class="flabel">Harold</div><div class="fvalue">${money(t.harold)}</div></div>
+    <div class="finbox ${t.profit>=0?"profit":"loss"}"><div class="flabel">Ganancia</div><div class="fvalue">${money(t.profit)}</div></div>
+  </div></div>
+  <div class="section"><h2>Últimos servicios</h2>${serviceList(db.services.slice(-5).reverse())}</div>`;
+}
+
+/* ---------- Clientes ---------- */
+function clients(v){
+  v.innerHTML=head("Clientes","Tu base de clientes, guardada en este dispositivo")+`
+  <input id="q" class="search" placeholder="🔎 Buscar cliente..." oninput="clientSearch()">
+  <div id="clist">${clientList(db.clients)}</div>`;
+}
+function clientList(a){
+  if(!a.length)return `<div class="empty">No hay clientes todavía.<br><br><button class="btn gold" onclick="clientForm()">Crear primer cliente</button></div>`;
+  return `<div class="list">${a.map(x=>`<div class="item"><div class="itemhead"><div><b>${esc(x.name)}</b><div class="meta">${esc(x.phone||"Sin teléfono")} · ${esc(x.country||"Sin país")}</div></div><button class="btn light" onclick="clientForm('${x.id}')">Editar</button></div><div class="meta">${esc(x.email||"Sin email")} · ${db.services.filter(s=>s.clientId===x.id).length} servicio(s)</div></div>`).join("")}</div>`;
+}
+function clientSearch(){const q=document.getElementById("q").value.toLowerCase();document.getElementById("clist").innerHTML=clientList(db.clients.filter(x=>(x.name+" "+x.phone+" "+x.email+" "+x.country).toLowerCase().includes(q)));}
+function clientForm(i=""){
+  const x=db.clients.find(a=>a.id===i)||{};
+  openModal(i?"Editar cliente":"Nuevo cliente",`<form onsubmit="saveClient(event,'${i}')"><div class="formgrid">
+  <label>Nombre completo<input required name="name" value="${esc(x.name)}"></label>
+  <div class="row"><label>WhatsApp / Teléfono<input name="phone" value="${esc(x.phone)}"></label><label>País<input name="country" value="${esc(x.country)}"></label></div>
+  <label>Email<input type="email" name="email" value="${esc(x.email)}"></label>
+  <label>Gestor<select name="gestorId"><option value="">Sin gestor</option>${db.gestors.map(g=>`<option value="${g.id}" ${x.gestorId===g.id?"selected":""}>${esc(g.name)}</option>`).join("")}</select></label>
+  <label>Notas<textarea name="notes">${esc(x.notes)}</textarea></label>
+  <button class="btn gold">Guardar cliente</button></div></form>`);
+}
+function saveClient(e,i){e.preventDefault();const f=new FormData(e.target);const x={id:i||id(),name:f.get("name"),phone:f.get("phone"),country:f.get("country"),email:f.get("email"),gestorId:f.get("gestorId"),notes:f.get("notes")};if(i)db.clients=db.clients.map(a=>a.id===i?x:a);else db.clients.push(x);save();closeModal();render();}
+
+/* ---------- Servicios ---------- */
+function services(v){
+  v.innerHTML=head("Servicios","Boletos, hoteles, visas, paquetes y más")+`
+  <input id="sq" class="search" placeholder="🔎 Buscar servicio o cliente..." oninput="serviceSearch()">
+  <div id="slist">${serviceList(db.services.slice().reverse())}</div>`;
+}
+function serviceList(a){
+  if(!a.length)return `<div class="empty">No hay servicios registrados.</div>`;
+  return `<div class="list">${a.map(s=>{
+    const p=paid(s.id),st=p>=num(s.total)&&num(s.total)>0?"Pagado":p>0?"Abono":"Pendiente",f=serviceFinancials(s);
+    return `<div class="item"><div class="itemhead"><div><b>${esc(cname(s.clientId))}</b><div class="meta">${esc(s.type)} · ${esc(s.company)} · ${esc(s.date)}</div></div><span class="pill ${st==="Pagado"?"ok":st==="Abono"?"warn":"red"}">${st}</span></div>
+    <div class="meta"><b>${money(s.total,s.currency)}</b> · Cobrado ${money(p,s.currency)} · ${s.passengers||1} pasajero(s) · Gestor: ${esc(gname(s.gestorId))}</div>
+    <div class="financial"><div class="finbox"><div class="flabel">Comisiones</div><div class="fvalue">${money(f.gestor+f.yisel+f.harold,s.currency)}</div></div><div class="finbox ${f.profit>=0?"profit":"loss"}"><div class="flabel">Ganancia</div><div class="fvalue">${money(f.profit,s.currency)}</div></div></div>
+    <div style="margin-top:9px"><button class="btn light" onclick="serviceForm('${s.id}')">Ver / editar</button></div></div>`;
+  }).join("")}</div>`;
+}
+function serviceSearch(){const q=document.getElementById("sq").value.toLowerCase();document.getElementById("slist").innerHTML=serviceList(db.services.filter(s=>(cname(s.clientId)+" "+s.type+" "+s.company+" "+s.date).toLowerCase().includes(q)).reverse());}
+
+function serviceForm(i=""){
+  const x=db.services.find(a=>a.id===i)||{};
+  openModal(i?"Editar servicio":"Nuevo servicio",`<form id="serviceForm" onsubmit="saveService(event,'${i}')"><div class="formgrid">
+  <div class="row">
+    <label>Empresa<select name="company"><option ${x.company==="HSM"||!i?"selected":""}>HSM</option><option ${x.company==="YHL"?"selected":""}>YHL</option></select></label>
+    <label>Tipo<select id="serviceType" name="type" onchange="autoGestorRate()">${SERVICE_TYPES.map(t=>`<option ${x.type===t?"selected":""}>${t}</option>`).join("")}</select></label>
+  </div>
+  <label>Cliente<select required name="clientId"><option value="">Seleccionar...</option>${db.clients.map(c=>`<option value="${c.id}" ${x.clientId===c.id?"selected":""}>${esc(c.name)}</option>`).join("")}</select></label>
+  <div class="row"><label>Fecha<input type="date" name="date" value="${x.date||today()}"></label><label>Pasajeros<input type="number" min="1" name="passengers" value="${x.passengers||1}"></label></div>
+  <div class="row"><label>Valor total<input required type="number" step="0.01" name="total" value="${x.total??""}"></label><label>Moneda<select name="currency">${["USD","EUR","CUP"].map(c=>`<option ${x.currency===c||(!x.currency&&c==="USD")?"selected":""}>${c}</option>`).join("")}</select></label></div>
+  <label>Gestor<select id="gestorSelect" name="gestorId" onchange="autoGestorRate()"><option value="">Sin gestor</option>${db.gestors.map(g=>`<option value="${g.id}" ${x.gestorId===g.id?"selected":""}>${esc(g.name)}</option>`).join("")}</select></label>
+
+  <div class="section"><h2>💵 Comisiones</h2>
+    <div class="note">La comisión del gestor se toma automáticamente de la tarifa configurada para este <b>tipo de servicio</b>. Puedes cambiarla solo para este servicio si lo necesitas.</div>
+    <div class="commission-row">
+      <strong>👤 Comisión del gestor</strong>
+      <div class="row">
+        <label>Tipo<select id="gestorCommissionType" name="gestorCommissionType" onchange="updateGestorCommissionPreview()"><option value="fixed" ${x.gestorCommissionType==="percent"?"":"selected"}>Monto fijo</option><option value="percent" ${x.gestorCommissionType==="percent"?"selected":""}>Porcentaje %</option></select></label>
+        <label>Valor<input id="gestorCommissionValue" type="number" step="0.01" name="gestorCommissionValue" value="${x.gestorCommissionValue!==undefined?x.gestorCommissionValue:(x.gestorCommission!==undefined?x.gestorCommission:0)}"></label>
+      </div>
+      <div id="gestorRateHint" class="type-tag"></div>
+    </div>
+    <div class="commission-row"><strong>👩 Comisión Yisel</strong><div class="row"><label>Tipo<select name="yiselCommissionType"><option value="fixed" ${x.yiselCommissionType==="percent"?"":"selected"}>Monto fijo</option><option value="percent" ${x.yiselCommissionType==="percent"?"selected":""}>Porcentaje %</option></select></label><label>Valor<input type="number" step="0.01" name="yiselCommissionValue" value="${x.yiselCommissionValue||0}"></label></div></div>
+    <div class="commission-row"><strong>👨 Comisión Harold</strong><div class="row"><label>Tipo<select name="haroldCommissionType"><option value="fixed" ${x.haroldCommissionType==="percent"?"":"selected"}>Monto fijo</option><option value="percent" ${x.haroldCommissionType==="percent"?"selected":""}>Porcentaje %</option></select></label><label>Valor<input type="number" step="0.01" name="haroldCommissionValue" value="${x.haroldCommissionValue||0}"></label></div></div>
+  </div>
+
+  <div class="section"><h2>📉 Costos</h2>
+    <label>Costo del servicio<input type="number" step="0.01" name="cost" value="${x.cost||0}"></label>
+    <label>Otros costos<input type="number" step="0.01" name="otherCost" value="${x.otherCost||0}"></label>
+    <div class="note">Ganancia = valor del servicio − costo − comisiones − otros costos.</div>
+  </div>
+  <label>Notas<textarea name="notes">${esc(x.notes)}</textarea></label>
+  <button class="btn gold">Guardar servicio</button></div></form>`);
+  setTimeout(()=>autoGestorRate(true),0);
+}
+
+function autoGestorRate(force=false){
+  const gid=document.getElementById("gestorSelect")?.value,type=document.getElementById("serviceType")?.value;
+  const input=document.getElementById("gestorCommissionValue"),typeInput=document.getElementById("gestorCommissionType"),hint=document.getElementById("gestorRateHint");
+  if(!gid||!type||!input||!typeInput)return;
+  const g=db.gestors.find(x=>x.id===gid),r=defaultRateForGestor(g,type);
+  if(force || input.dataset.manual!=="1"){
+    input.value=r.value;typeInput.value=r.type;
+  }
+  input.oninput=()=>{input.dataset.manual="1";};
+  hint.innerHTML=r.value?`Tarifa configurada para ${esc(type)}: <b>${r.type==="percent"?r.value+"%":money(r.value)}</b>.`:"No hay tarifa configurada para este servicio; puedes introducirla aquí.";
+}
+function updateGestorCommissionPreview(){autoGestorRate(false);}
+
+function saveService(e,i){
+  e.preventDefault();const f=new FormData(e.target),old=db.services.find(a=>a.id===i)||{};
+  const x={id:i||id(),company:f.get("company"),type:f.get("type"),clientId:f.get("clientId"),date:f.get("date"),passengers:num(f.get("passengers"))||1,total:num(f.get("total")),currency:f.get("currency"),gestorId:f.get("gestorId"),gestorCommissionType:f.get("gestorCommissionType")||"fixed",gestorCommissionValue:num(f.get("gestorCommissionValue")),yiselCommissionType:f.get("yiselCommissionType")||"fixed",yiselCommissionValue:num(f.get("yiselCommissionValue")),haroldCommissionType:f.get("haroldCommissionType")||"fixed",haroldCommissionValue:num(f.get("haroldCommissionValue")),cost:num(f.get("cost")),otherCost:num(f.get("otherCost")),notes:f.get("notes")};
+  if(old.createdAt)x.createdAt=old.createdAt;else x.createdAt=new Date().toISOString();
+  if(i)db.services=db.services.map(a=>a.id===i?x:a);else db.services.push(x);save();closeModal();render();
+}
+
+/* ---------- Pagos ---------- */
+function payments(v){
+  v.innerHTML=head("Pagos","Cobros registrados y control de saldos")+`<div class="toolbar"><button class="btn gold" onclick="paymentForm()">+ Registrar pago</button></div><div class="list">${
+  db.payments.slice().reverse().map(p=>{const s=db.services.find(x=>x.id===p.serviceId);return `<div class="item"><b>${esc(cname(s?.clientId))}</b><div class="meta">${esc(s?.type||"Servicio")} · ${esc(p.date)} · ${esc(p.method)}</div><div style="margin-top:6px;font-weight:800">${money(p.amount,p.currency)}</div></div>`}).join("")||`<div class="empty">No hay pagos registrados.</div>`}</div>`;
+}
+function paymentForm(){
+  openModal("Registrar pago",`<form onsubmit="savePayment(event)"><div class="formgrid">
+  <label>Servicio<select required name="serviceId"><option value="">Seleccionar...</option>${db.services.map(s=>`<option value="${s.id}">${esc(cname(s.clientId))} · ${esc(s.type)} · ${money(s.total,s.currency)}</option>`).join("")}</select></label>
+  <div class="row"><label>Fecha<input type="date" name="date" value="${today()}"></label><label>Importe<input required type="number" step="0.01" name="amount"></label></div>
+  <div class="row"><label>Moneda<select name="currency"><option>USD</option><option>EUR</option><option>CUP</option></select></label><label>Método<select name="method"><option>Efectivo</option><option>Transferencia</option><option>Tarjeta</option><option>Otro</option></select></label></div>
+  <label>Nota<input name="note"></label><button class="btn gold">Guardar pago</button></div></form>`);
+}
+function savePayment(e){e.preventDefault();const f=new FormData(e.target);db.payments.push({id:id(),serviceId:f.get("serviceId"),date:f.get("date"),amount:num(f.get("amount")),currency:f.get("currency"),method:f.get("method"),note:f.get("note")});save();closeModal();render();}
+
+/* ---------- Comisiones ---------- */
+function commissions(v){
+  const t=totals();
+  v.innerHTML=head("💵 Comisiones","Tarifas por tipo de servicio y rentabilidad")+`
+  <div class="total-highlight"><div class="small">GANANCIA TOTAL</div><div class="big">${money(t.profit)}</div><div class="small">Después de costos, comisiones y otros gastos</div></div>
+  <div class="cards">
+    <div class="card"><div class="label">GESTORES</div><div class="metric">${money(t.gestor)}</div></div>
+    <div class="card"><div class="label">YISEL</div><div class="metric">${money(t.yisel)}</div></div>
+    <div class="card"><div class="label">HAROLD</div><div class="metric">${money(t.harold)}</div></div>
+    <div class="card"><div class="label">OTROS COSTOS</div><div class="metric">${money(t.other)}</div></div>
+  </div>
+  <div class="section"><h2>⚙️ Tarifas de cada gestor</h2>
+    <div class="note">Aquí defines cuánto cobra cada gestor según el servicio. Por ejemplo: <b>Boleto = $50</b> y <b>Visa = $100</b>. Estas tarifas se aplican automáticamente al crear un servicio.</div>
+    <div class="list" style="margin-top:10px">${db.gestors.map(g=>`
+      <div class="item"><div class="itemhead"><div><b>${esc(g.name)}</b><div class="meta">${esc(g.phone||"Sin teléfono")}</div></div><button class="btn light" onclick="gestorForm('${g.id}')">Editar tarifas</button></div>
+      <div class="meta">${rateSummary(g)}</div></div>`).join("")||`<div class="empty">No hay gestores registrados.</div>`}</div>
+  </div>
+  <div class="section"><h2>📋 Comisiones por servicio</h2>${db.services.length?`<div class="list">${db.services.slice().reverse().map(s=>{const f=serviceFinancials(s);return `<div class="item"><div class="itemhead"><div><b>${esc(cname(s.clientId))}</b><div class="meta">${esc(s.type)} · ${esc(s.date)} · ${esc(gname(s.gestorId))}</div></div><button class="btn light" onclick="serviceForm('${s.id}')">Editar</button></div><div class="financial"><div class="finbox"><div class="flabel">Gestor</div><div class="fvalue">${money(f.gestor,s.currency)}</div></div><div class="finbox"><div class="flabel">Yisel</div><div class="fvalue">${money(f.yisel,s.currency)}</div></div><div class="finbox"><div class="flabel">Harold</div><div class="fvalue">${money(f.harold,s.currency)}</div></div><div class="finbox ${f.profit>=0?"profit":"loss"}"><div class="flabel">Ganancia</div><div class="fvalue">${money(f.profit,s.currency)}</div></div></div></div>`}).join("")}</div>`:`<div class="empty">No hay servicios registrados.</div>`}</div>
+  <div class="section"><h2>📊 Resumen general</h2><div class="financial">
+    <div class="finbox"><div class="flabel">Ventas</div><div class="fvalue">${money(t.sales)}</div></div>
+    <div class="finbox"><div class="flabel">Costos</div><div class="fvalue">${money(t.costs)}</div></div>
+    <div class="finbox"><div class="flabel">Gestores</div><div class="fvalue">${money(t.gestor)}</div></div>
+    <div class="finbox"><div class="flabel">Yisel</div><div class="fvalue">${money(t.yisel)}</div></div>
+    <div class="finbox"><div class="flabel">Harold</div><div class="fvalue">${money(t.harold)}</div></div>
+    <div class="finbox"><div class="flabel">Otros</div><div class="fvalue">${money(t.other)}</div></div>
+  </div></div>`;
+}
+
+function rateSummary(g){
+  const items=SERVICE_TYPES.map(t=>{const r=defaultRateForGestor(g,t);return r.value?`${t}: ${r.type==="percent"?r.value+"%":money(r.value)}`:null;}).filter(Boolean);
+  return items.length?items.join(" · "):"Sin tarifas configuradas";
+}
+
+/* ---------- Gestores ---------- */
+function gestorForm(i=""){
+  const x=db.gestors.find(a=>a.id===i)||{name:"",phone:"",rates:{}};
+  normalizeGestor(x);
+  openModal(i?"Editar gestor":"Nuevo gestor",`<form onsubmit="saveGestor(event,'${i}')"><div class="formgrid">
+  <label>Nombre<input required name="name" value="${esc(x.name)}"></label>
+  <label>Teléfono<input name="phone" value="${esc(x.phone)}"></label>
+  <div class="section"><h2>💵 Comisiones por tipo de servicio</h2>
+    <div class="note">Configura una tarifa independiente para cada servicio. Puedes usar un monto fijo o un porcentaje.</div>
+    <div class="ratebox">
+      ${SERVICE_TYPES.map(t=>{const r=defaultRateForGestor(x,t);return `<div class="rate-item"><div><b>${t}</b><div class="small">Comisión</div></div><select name="rateType_${esc(t)}"><option value="fixed" ${r.type==="fixed"?"selected":""}>Fijo</option><option value="percent" ${r.type==="percent"?"selected":""}>%</option></select><input type="number" step="0.01" name="rateValue_${esc(t)}" value="${r.value}"><button type="button" class="iconbtn" onclick="clearRate(this)">×</button></div>`}).join("")}
+    </div>
+  </div>
+  <button class="btn gold">Guardar gestor</button></div></form>`);
+}
+function clearRate(btn){const row=btn.closest(".rate-item");row.querySelector('input[type="number"]').value=0;row.querySelector("select").value="fixed";}
+function saveGestor(e,i){
+  e.preventDefault();const f=new FormData(e.target),rates={};
+  SERVICE_TYPES.forEach(t=>{rates[t]={type:f.get("rateType_"+t)||"fixed",value:num(f.get("rateValue_"+t))};});
+  const x={id:i||id(),name:f.get("name"),phone:f.get("phone"),rates};
+  if(i)db.gestors=db.gestors.map(a=>a.id===i?x:a);else db.gestors.push(x);
+  save();closeModal();render();
+}
+
+/* ---------- Más / agenda / respaldo ---------- */
+function more(v){
+  v.innerHTML=head("Más","Gestores, agenda y respaldo")+`
+  <div class="section"><h2>Gestores</h2><div class="toolbar"><button class="btn gold" onclick="gestorForm()">+ Nuevo gestor</button></div><div class="list">${db.gestors.map(g=>`<div class="item"><div class="itemhead"><div><b>${esc(g.name)}</b><div class="meta">${esc(g.phone||"Sin teléfono")}</div></div><button class="btn light" onclick="gestorForm('${g.id}')">Editar</button></div><div class="meta">${rateSummary(g)}</div></div>`).join("")||`<div class="empty">No hay gestores.</div>`}</div></div>
+  <div class="section"><h2>Agenda</h2><button class="btn light" onclick="taskForm()">+ Nueva tarea</button><div class="list" style="margin-top:10px">${db.tasks.slice().sort((a,b)=>String(a.date).localeCompare(String(b.date))).map(t=>`<div class="item"><b>${esc(t.title)}</b><div class="meta">${esc(t.date)} · ${esc(gname(t.gestorId))}</div><button class="btn ${t.done?"light":"gold"}" style="margin-top:8px" onclick="toggleTask('${t.id}')">${t.done?"Reabrir":"Completar"}</button></div>`).join("")||`<div class="empty">No hay tareas.</div>`}</div></div>
+  <div class="section"><h2>Respaldo</h2><div class="note">Los datos se guardan en este dispositivo. Exporta un respaldo con frecuencia y guárdalo en Archivos/iCloud.</div><div class="toolbar" style="margin-top:10px"><button class="btn gold" onclick="exportData()">⬇ Exportar</button><button class="btn light" onclick="document.getElementById('imp').click()">⬆ Importar</button><input id="imp" class="hidden" type="file" accept=".json" onchange="importData(event)"></div></div>
+  <div class="section"><h2>Resumen</h2><div class="meta">${db.clients.length} clientes · ${db.services.length} servicios · ${db.payments.length} pagos · ${db.gestors.length} gestores</div></div>`;
+}
+function taskForm(){openModal("Nueva tarea",`<form onsubmit="saveTask(event)"><div class="formgrid"><label>Tarea<input required name="title"></label><div class="row"><label>Fecha<input type="date" name="date" value="${today()}"></label><label>Responsable<select name="gestorId"><option value="">Sin asignar</option>${db.gestors.map(g=>`<option value="${g.id}">${esc(g.name)}</option>`).join("")}</select></label></div><button class="btn gold">Guardar</button></div></form>`);}
+function saveTask(e){e.preventDefault();const f=new FormData(e.target);db.tasks.push({id:id(),title:f.get("title"),date:f.get("date"),gestorId:f.get("gestorId"),done:false});save();closeModal();render();}
+function toggleTask(i){const t=db.tasks.find(x=>x.id===i);if(!t)return;t.done=!t.done;save();render();}
+function exportData(){const b=new Blob([JSON.stringify(db,null,2)],{type:"application/json"}),a=document.createElement("a");a.href=URL.createObjectURL(b);a.download="HSM-YHL-CRM-"+today()+".json";a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);}
+function importData(e){const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{const x=JSON.parse(r.result);if(!x.clients||!x.services||!x.payments)throw 0;db=x;db.clients=db.clients||[];db.services=db.services||[];db.payments=db.payments||[];db.gestors=db.gestors||[];db.tasks=db.tasks||[];db.gestors.forEach(normalizeGestor);save();render();alert("Respaldo restaurado correctamente.");}catch{alert("Respaldo no válido.");}};r.readAsText(f);}
+
+/* ---------- Modal ---------- */
+function openModal(t,b){document.getElementById("mtitle").textContent=t;document.getElementById("mbody").innerHTML=b;document.getElementById("modal").classList.add("open");}
+function closeModal(){document.getElementById("modal").classList.remove("open");}
+document.getElementById("modal").addEventListener("click",e=>{if(e.target.id==="modal")closeModal();});
+
+render();
+</script>
+</body>
+</html>
