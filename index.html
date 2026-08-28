@@ -4,413 +4,440 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#0b1830">
-<title>HSM & YHL CRM Mobile</title>
+<title>HSM & YHL CRM</title>
 
 <style>
 :root{
---navy:#0b1830;
---gold:#c9a45c;
---bg:#f4f6f9;
---card:#fff;
---text:#142033;
---muted:#718096;
---line:#e3e7ed;
---ok:#15803d;
---warn:#b7791f;
---red:#c0392b
+  --navy:#0b1830;
+  --gold:#c9a45c;
+  --bg:#f4f6f9;
+  --card:#fff;
+  --text:#142033;
+  --muted:#718096;
+  --line:#e3e7ed;
+  --ok:#15803d;
+  --warn:#b7791f;
+  --red:#c0392b;
 }
 
 *{box-sizing:border-box}
 
 html,body{
-margin:0;
-background:var(--bg);
-color:var(--text);
-font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif;
--webkit-tap-highlight-color:transparent
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif;
+  -webkit-tap-highlight-color:transparent;
 }
 
-body{padding-bottom:82px}
+body{padding-bottom:88px}
 
 .app{
-max-width:760px;
-margin:auto
+  max-width:760px;
+  margin:auto;
 }
 
 .top{
-background:var(--navy);
-color:#fff;
-padding:calc(18px + env(safe-area-inset-top)) 18px 18px;
-position:sticky;
-top:0;
-z-index:4
+  background:var(--navy);
+  color:#fff;
+  padding:calc(18px + env(safe-area-inset-top)) 18px 18px;
+  position:sticky;
+  top:0;
+  z-index:4;
 }
 
 .toprow{
-display:flex;
-align-items:center;
-justify-content:space-between
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
 }
 
 .logo{
-font-weight:800;
-font-size:21px;
-letter-spacing:.5px
+  font-weight:800;
+  font-size:21px;
+  letter-spacing:.5px;
 }
 
 .logo small{
-display:block;
-color:var(--gold);
-font-size:10px;
-letter-spacing:1.4px;
-margin-top:2px
+  display:block;
+  color:var(--gold);
+  font-size:10px;
+  letter-spacing:1.4px;
+  margin-top:2px;
 }
 
 .offline{
-font-size:10px;
-background:#143653;
-border:1px solid #2a5270;
-border-radius:20px;
-padding:6px 9px
+  font-size:10px;
+  background:#143653;
+  border:1px solid #2a5270;
+  border-radius:20px;
+  padding:6px 9px;
 }
 
 .content{padding:15px}
 
 .title{
-font-size:25px;
-font-weight:800;
-margin:4px 0
+  font-size:25px;
+  font-weight:800;
+  margin:4px 0;
 }
 
 .subtitle{
-font-size:13px;
-color:var(--muted);
-margin-bottom:15px
+  font-size:13px;
+  color:var(--muted);
+  margin-bottom:15px;
 }
 
 .cards{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:10px
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
 }
 
 .card{
-background:var(--card);
-border:1px solid var(--line);
-border-radius:15px;
-padding:15px;
-box-shadow:0 4px 16px #00000007
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:15px;
+  padding:15px;
+  box-shadow:0 4px 16px #00000007;
 }
 
 .metric{
-font-size:22px;
-font-weight:800;
-margin-top:5px
+  font-size:22px;
+  font-weight:800;
+  margin-top:5px;
 }
 
 .label{
-font-size:11px;
-color:var(--muted)
+  font-size:11px;
+  color:var(--muted);
 }
 
 .section{
-background:#fff;
-border:1px solid var(--line);
-border-radius:15px;
-padding:15px;
-margin:12px 0
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:15px;
+  padding:15px;
+  margin:12px 0;
 }
 
 .section h2{
-font-size:16px;
-margin:0 0 12px
+  font-size:16px;
+  margin:0 0 12px;
 }
 
 .btn{
-border:0;
-border-radius:11px;
-padding:12px 14px;
-font-weight:750;
-font-size:14px;
-background:var(--navy);
-color:#fff;
-min-height:44px
+  border:0;
+  border-radius:11px;
+  padding:12px 14px;
+  font-weight:750;
+  font-size:14px;
+  background:var(--navy);
+  color:#fff;
+  min-height:44px;
+  cursor:pointer;
 }
 
 .gold{
-background:var(--gold);
-color:#101010
+  background:var(--gold);
+  color:#101010;
 }
 
 .light{
-background:#edf1f5;
-color:#253244
+  background:#edf1f5;
+  color:#253244;
 }
 
 .danger{
-background:#fdebea;
-color:var(--red)
+  background:#fdebea;
+  color:var(--red);
 }
 
 .toolbar{
-display:flex;
-gap:8px;
-overflow:auto;
-margin-bottom:12px
+  display:flex;
+  gap:8px;
+  overflow:auto;
+  margin-bottom:12px;
 }
 
 .toolbar .btn{
-white-space:nowrap
+  white-space:nowrap;
 }
 
 .search{
-margin-bottom:10px
+  margin-bottom:10px;
 }
 
 input,select,textarea{
-width:100%;
-border:1px solid #d8dee7;
-border-radius:11px;
-padding:12px;
-font:inherit;
-background:#fff;
-color:var(--text);
-font-size:16px
+  width:100%;
+  border:1px solid #d8dee7;
+  border-radius:11px;
+  padding:12px;
+  font:inherit;
+  background:#fff;
+  color:var(--text);
+  font-size:16px;
 }
 
 textarea{
-min-height:88px
+  min-height:88px;
 }
 
 .formgrid{
-display:grid;
-gap:11px
+  display:grid;
+  gap:11px;
 }
 
 label{
-display:block;
-font-size:12px;
-font-weight:700;
-color:#5d6978;
-margin:0 0 5px
+  display:block;
+  font-size:12px;
+  font-weight:700;
+  color:#5d6978;
+  margin:0 0 5px;
 }
 
 .row{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:10px
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
 }
 
 .list{
-display:grid;
-gap:9px
+  display:grid;
+  gap:9px;
 }
 
 .item{
-background:#fff;
-border:1px solid var(--line);
-border-radius:13px;
-padding:13px
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:13px;
+  padding:13px;
 }
 
 .itemhead{
-display:flex;
-justify-content:space-between;
-gap:8px
+  display:flex;
+  justify-content:space-between;
+  gap:8px;
 }
 
 .item b{
-font-size:14px
+  font-size:14px;
 }
 
 .meta{
-font-size:12px;
-color:var(--muted);
-margin-top:5px;
-line-height:1.45
+  font-size:12px;
+  color:var(--muted);
+  margin-top:5px;
+  line-height:1.45;
 }
 
 .pill{
-display:inline-block;
-border-radius:20px;
-padding:5px 8px;
-font-size:10px;
-font-weight:800;
-background:#eef1f5
+  display:inline-block;
+  border-radius:20px;
+  padding:5px 8px;
+  font-size:10px;
+  font-weight:800;
+  background:#eef1f5;
 }
 
 .ok{
-background:#e8f7ee;
-color:var(--ok)
+  background:#e8f7ee;
+  color:var(--ok);
 }
 
 .warn{
-background:#fff4dc;
-color:var(--warn)
+  background:#fff4dc;
+  color:var(--warn);
 }
 
 .red{
-background:#fdebea;
-color:var(--red)
+  background:#fdebea;
+  color:var(--red);
 }
 
 .bottom{
-position:fixed;
-left:0;
-right:0;
-bottom:0;
-background:#fff;
-border-top:1px solid var(--line);
-z-index:10;
-padding:7px 6px calc(7px + env(safe-area-inset-bottom));
-display:grid;
-grid-template-columns:repeat(5,1fr);
-max-width:760px;
-margin:auto
+  position:fixed;
+  left:0;
+  right:0;
+  bottom:0;
+  background:#fff;
+  border-top:1px solid var(--line);
+  z-index:10;
+  padding:7px 4px calc(7px + env(safe-area-inset-bottom));
+  display:grid;
+  grid-template-columns:repeat(6,1fr);
+  max-width:760px;
+  margin:auto;
 }
 
 .navbtn{
-border:0;
-background:transparent;
-color:#667085;
-font-size:10px;
-padding:5px 1px
+  border:0;
+  background:transparent;
+  color:#667085;
+  font-size:9px;
+  padding:5px 1px;
+  cursor:pointer;
 }
 
 .navbtn .ico{
-font-size:20px;
-display:block;
-margin-bottom:2px
+  font-size:19px;
+  display:block;
+  margin-bottom:2px;
 }
 
 .navbtn.active{
-color:var(--navy);
-font-weight:800
+  color:var(--navy);
+  font-weight:800;
 }
 
 .fab{
-position:fixed;
-right:18px;
-bottom:92px;
-width:54px;
-height:54px;
-border:0;
-border-radius:50%;
-background:var(--gold);
-font-size:27px;
-box-shadow:0 8px 22px #0003;
-z-index:5
+  position:fixed;
+  right:18px;
+  bottom:95px;
+  width:54px;
+  height:54px;
+  border:0;
+  border-radius:50%;
+  background:var(--gold);
+  font-size:27px;
+  box-shadow:0 8px 22px #0003;
+  z-index:5;
+  cursor:pointer;
 }
 
 .modal{
-position:fixed;
-inset:0;
-background:#0008;
-z-index:20;
-display:none;
-align-items:flex-end
+  position:fixed;
+  inset:0;
+  background:#0008;
+  z-index:20;
+  display:none;
+  align-items:flex-end;
 }
 
 .modal.open{
-display:flex
+  display:flex;
 }
 
 .sheet{
-background:#fff;
-width:100%;
-max-height:92vh;
-overflow:auto;
-border-radius:20px 20px 0 0;
-padding:18px 16px calc(20px + env(safe-area-inset-bottom))
+  background:#fff;
+  width:100%;
+  max-height:92vh;
+  overflow:auto;
+  border-radius:20px 20px 0 0;
+  padding:18px 16px calc(20px + env(safe-area-inset-bottom));
 }
 
 .sheethead{
-display:flex;
-justify-content:space-between;
-align-items:center;
-margin-bottom:14px
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:14px;
 }
 
 .x{
-border:0;
-border-radius:50%;
-width:36px;
-height:36px;
-font-size:22px
+  border:0;
+  border-radius:50%;
+  width:36px;
+  height:36px;
+  font-size:22px;
+  cursor:pointer;
 }
 
 .empty{
-text-align:center;
-color:var(--muted);
-padding:24px 10px;
-font-size:13px
+  text-align:center;
+  color:var(--muted);
+  padding:24px 10px;
+  font-size:13px;
 }
 
 .note{
-font-size:12px;
-background:#fff8e7;
-border:1px solid #efdfb2;
-padding:11px;
-border-radius:11px;
-color:#6a571f;
-line-height:1.4
+  font-size:12px;
+  background:#fff8e7;
+  border:1px solid #efdfb2;
+  padding:11px;
+  border-radius:11px;
+  color:#6a571f;
+  line-height:1.4;
 }
 
 .hidden{
-display:none
+  display:none;
+}
+
+.financial{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+  margin-top:10px;
+}
+
+.finbox{
+  background:#f7f8fa;
+  border-radius:11px;
+  padding:10px;
+}
+
+.finbox .flabel{
+  font-size:10px;
+  color:var(--muted);
+}
+
+.finbox .fvalue{
+  font-size:16px;
+  font-weight:800;
+  margin-top:3px;
 }
 
 .profit{
-font-size:18px;
-font-weight:800
+  background:#e8f7ee;
 }
 
-.commission-box{
-background:#f8fafc;
-border:1px solid var(--line);
-border-radius:12px;
-padding:12px;
-margin-top:10px
+.loss{
+  background:#fdebea;
+}
+
+.commission-grid{
+  display:grid;
+  gap:8px;
 }
 
 .commission-row{
-display:flex;
-justify-content:space-between;
-gap:10px;
-font-size:13px;
-padding:5px 0
+  background:#f7f8fa;
+  border-radius:12px;
+  padding:10px;
 }
 
-.commission-row.total{
-border-top:1px solid var(--line);
-margin-top:6px;
-padding-top:9px;
-font-weight:800
+.commission-row strong{
+  display:block;
+  font-size:13px;
+  margin-bottom:7px;
 }
 
-.statgrid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:8px
+.small{
+  font-size:11px;
+  color:var(--muted);
 }
 
-.stat{
-background:#f7f9fb;
-border:1px solid var(--line);
-border-radius:12px;
-padding:11px
+.total-highlight{
+  background:var(--navy);
+  color:#fff;
+  border-radius:15px;
+  padding:16px;
+  margin:12px 0;
 }
 
-.stat .big{
-font-size:18px;
-font-weight:800;
-margin-top:4px
+.total-highlight .big{
+  font-size:26px;
+  font-weight:800;
 }
 
-hr{
-border:0;
-border-top:1px solid var(--line);
-margin:12px 0
+.total-highlight .small{
+  color:#cbd5e1;
+}
+
+@media(max-width:390px){
+  .navbtn{font-size:8px}
+  .navbtn .ico{font-size:18px}
 }
 </style>
 </head>
@@ -420,37 +447,43 @@ margin:12px 0
 <div class="app">
 
 <header class="top">
-<div class="toprow">
-<div class="logo">
-HSM & YHL
-<small>TRAVEL CRM</small>
-</div>
-<div class="offline">● OFFLINE</div>
-</div>
+  <div class="toprow">
+    <div class="logo">
+      HSM & YHL
+      <small>TRAVEL CRM</small>
+    </div>
+    <div class="offline">● OFFLINE</div>
+  </div>
 </header>
 
 <main id="view" class="content"></main>
 
 <nav class="bottom">
-<button class="navbtn active" data-p="home">
-<span class="ico">📊</span>Inicio
-</button>
 
-<button class="navbtn" data-p="clients">
-<span class="ico">👥</span>Clientes
-</button>
+  <button class="navbtn active" data-p="home">
+    <span class="ico">📊</span>Inicio
+  </button>
 
-<button class="navbtn" data-p="services">
-<span class="ico">✈️</span>Servicios
-</button>
+  <button class="navbtn" data-p="clients">
+    <span class="ico">👥</span>Clientes
+  </button>
 
-<button class="navbtn" data-p="payments">
-<span class="ico">💰</span>Pagos
-</button>
+  <button class="navbtn" data-p="services">
+    <span class="ico">✈️</span>Servicios
+  </button>
 
-<button class="navbtn" data-p="more">
-<span class="ico">☰</span>Más
-</button>
+  <button class="navbtn" data-p="payments">
+    <span class="ico">💰</span>Pagos
+  </button>
+
+  <button class="navbtn" data-p="commissions">
+    <span class="ico">💵</span>Comisiones
+  </button>
+
+  <button class="navbtn" data-p="more">
+    <span class="ico">☰</span>Más
+  </button>
+
 </nav>
 
 <button class="fab" id="fab">+</button>
@@ -458,38 +491,32 @@ HSM & YHL
 </div>
 
 <div class="modal" id="modal">
-<div class="sheet">
-
-<div class="sheethead">
-<b id="mtitle"></b>
-<button class="x" onclick="closeModal()">×</button>
-</div>
-
-<div id="mbody"></div>
-
-</div>
+  <div class="sheet">
+    <div class="sheethead">
+      <b id="mtitle"></b>
+      <button class="x" onclick="closeModal()">×</button>
+    </div>
+    <div id="mbody"></div>
+  </div>
 </div>
 
 <script>
 
 /* =========================================================
    BASE DE DATOS
-========================================================= */
+   ========================================================= */
 
 const KEY="hsm_yhl_mobile_v2";
 
-let db=JSON.parse(localStorage.getItem(KEY)||"null")||{
-clients:[],
-services:[],
-payments:[],
-gestors:[],
-tasks:[]
-};
+let raw=localStorage.getItem(KEY);
 
-/* =========================================================
-   MIGRACIÓN DE DATOS ANTIGUOS
-   No borra información existente.
-========================================================= */
+let db;
+
+try{
+  db=JSON.parse(raw)||{};
+}catch{
+  db={};
+}
 
 db.clients=db.clients||[];
 db.services=db.services||[];
@@ -497,1996 +524,2741 @@ db.payments=db.payments||[];
 db.gestors=db.gestors||[];
 db.tasks=db.tasks||[];
 
-db.services=db.services.map(s=>({
-...s,
-gestorCommission:Number(s.gestorCommission||0),
-yiselCommission:Number(s.yiselCommission||0),
-haroldCommission:Number(s.haroldCommission||0),
-otherCosts:Number(s.otherCosts||0)
-}));
-
 let pageNow="home";
+
 
 /* =========================================================
    UTILIDADES
-========================================================= */
+   ========================================================= */
 
-const save=()=>localStorage.setItem(KEY,JSON.stringify(db));
-
-const id=()=>crypto.randomUUID?
-crypto.randomUUID():
-Date.now()+"-"+Math.random();
-
-const esc=s=>String(s??"").replace(
-/[&<>"']/g,
-m=>({
-"&":"&amp;",
-"<":"&lt;",
-">":"&gt;",
-'"':"&quot;",
-"'":"&#39;"
-}[m])
-);
-
-const money=(n,c="USD")=>
-new Intl.NumberFormat("en-US",{
-style:"currency",
-currency:c,
-maximumFractionDigits:2
-}).format(Number(n)||0);
-
-const cname=id=>
-db.clients.find(x=>x.id===id)?.name||"—";
-
-const gname=id=>
-db.gestors.find(x=>x.id===id)?.name||"—";
-
-const paid=sid=>
-db.payments
-.filter(x=>x.serviceId===sid)
-.reduce((a,x)=>a+Number(x.amount||0),0);
-
-const serviceCommissions=s=>({
-gestor:Number(s.gestorCommission||0),
-yisel:Number(s.yiselCommission||0),
-harold:Number(s.haroldCommission||0),
-other:Number(s.otherCosts||0)
-});
-
-const totalCosts=s=>{
-let c=serviceCommissions(s);
-return c.gestor+c.yisel+c.harold+c.other;
+const save=()=>{
+  localStorage.setItem(KEY,JSON.stringify(db));
 };
 
-const profit=s=>
-Number(s.total||0)-totalCosts(s);
+const id=()=>{
+  return crypto.randomUUID
+    ? crypto.randomUUID()
+    : Date.now()+"-"+Math.random();
+};
+
+const esc=s=>
+  String(s??"").replace(/[&<>"']/g,m=>({
+    "&":"&amp;",
+    "<":"&lt;",
+    ">":"&gt;",
+    '"':"&quot;",
+    "'":"&#39;"
+  }[m]));
+
+const num=n=>Number(n)||0;
+
+const money=(n,c="USD")=>{
+  try{
+    return new Intl.NumberFormat("en-US",{
+      style:"currency",
+      currency:c,
+      maximumFractionDigits:2
+    }).format(num(n));
+  }catch{
+    return num(n).toFixed(2)+" "+c;
+  }
+};
+
+const today=()=>{
+  return new Date().toISOString().slice(0,10);
+};
+
+const cname=cid=>{
+  return db.clients.find(x=>x.id===cid)?.name||"—";
+};
+
+const gname=gid=>{
+  return db.gestors.find(x=>x.id===gid)?.name||"—";
+};
+
+const paid=sid=>{
+  return db.payments
+    .filter(x=>x.serviceId===sid)
+    .reduce((a,x)=>a+num(x.amount),0);
+};
+
+
+/* =========================================================
+   COMISIONES
+   ========================================================= */
+
+function commissionAmount(service,person){
+
+  let type="";
+  let value=0;
+
+  if(person==="gestor"){
+    type=service.gestorCommissionType||"fixed";
+    value=num(service.gestorCommissionValue);
+
+    /* Compatibilidad con versión anterior */
+    if(!service.gestorCommissionType){
+      value=num(service.gestorCommission);
+      type="fixed";
+    }
+  }
+
+  if(person==="yisel"){
+    type=service.yiselCommissionType||"fixed";
+    value=num(service.yiselCommissionValue);
+  }
+
+  if(person==="harold"){
+    type=service.haroldCommissionType||"fixed";
+    value=num(service.haroldCommissionValue);
+  }
+
+  if(type==="percent"){
+    return num(service.total)*(value/100);
+  }
+
+  return value;
+}
+
+function serviceFinancials(service){
+
+  const gestor=commissionAmount(service,"gestor");
+  const yisel=commissionAmount(service,"yisel");
+  const harold=commissionAmount(service,"harold");
+
+  const cost=num(service.cost);
+  const other=num(service.otherCost);
+
+  const profit=
+    num(service.total)
+    -cost
+    -gestor
+    -yisel
+    -harold
+    -other;
+
+  return {
+    gestor,
+    yisel,
+    harold,
+    cost,
+    other,
+    profit
+  };
+}
+
+function totals(){
+
+  let sales=0;
+  let costs=0;
+  let gestor=0;
+  let yisel=0;
+  let harold=0;
+  let other=0;
+  let profit=0;
+
+  db.services.forEach(s=>{
+
+    sales+=num(s.total);
+
+    const f=serviceFinancials(s);
+
+    costs+=f.cost;
+    gestor+=f.gestor;
+    yisel+=f.yisel;
+    harold+=f.harold;
+    other+=f.other;
+    profit+=f.profit;
+
+  });
+
+  return {
+    sales,
+    costs,
+    gestor,
+    yisel,
+    harold,
+    other,
+    profit,
+    commissions:gestor+yisel+harold
+  };
+}
+
 
 /* =========================================================
    NAVEGACIÓN
-========================================================= */
+   ========================================================= */
 
 function go(p){
-pageNow=p;
 
-document
-.querySelectorAll(".navbtn")
-.forEach(b=>
-b.classList.toggle("active",b.dataset.p===p)
-);
+  pageNow=p;
 
-render();
+  document
+    .querySelectorAll(".navbtn")
+    .forEach(b=>{
+      b.classList.toggle(
+        "active",
+        b.dataset.p===p
+      );
+    });
+
+  render();
 }
 
 document
-.querySelectorAll(".navbtn")
-.forEach(b=>
-b.onclick=()=>go(b.dataset.p)
-);
+  .querySelectorAll(".navbtn")
+  .forEach(b=>{
+    b.onclick=()=>go(b.dataset.p);
+  });
+
 
 document.getElementById("fab").onclick=()=>{
 
-if(pageNow==="clients")clientForm();
+  if(pageNow==="clients"){
+    clientForm();
+    return;
+  }
 
-else if(pageNow==="services")serviceForm();
+  if(pageNow==="services"){
+    serviceForm();
+    return;
+  }
 
-else if(pageNow==="payments")paymentForm();
+  if(pageNow==="payments"){
+    paymentForm();
+    return;
+  }
 
-else if(pageNow==="more")gestorForm();
+  if(pageNow==="commissions"){
+    serviceForm();
+    return;
+  }
 
-else taskForm();
+  gestorForm();
 
 };
 
+
 /* =========================================================
    RENDER PRINCIPAL
-========================================================= */
+   ========================================================= */
 
 function render(){
 
-let v=document.getElementById("view");
+  let v=document.getElementById("view");
 
-if(pageNow==="home")home(v);
-
-else if(pageNow==="clients")clients(v);
-
-else if(pageNow==="services")services(v);
-
-else if(pageNow==="payments")payments(v);
-
-else more(v);
+  if(pageNow==="home"){
+    home(v);
+  }
+  else if(pageNow==="clients"){
+    clients(v);
+  }
+  else if(pageNow==="services"){
+    services(v);
+  }
+  else if(pageNow==="payments"){
+    payments(v);
+  }
+  else if(pageNow==="commissions"){
+    commissions(v);
+  }
+  else{
+    more(v);
+  }
 
 }
+
 
 /* =========================================================
    CABECERA
-========================================================= */
+   ========================================================= */
 
 function head(t,s){
 
-return `
-<div class="title">${t}</div>
-<div class="subtitle">${s}</div>
-`;
+  return `
+    <div class="title">${t}</div>
+    <div class="subtitle">${s}</div>
+  `;
 
 }
+
 
 /* =========================================================
    INICIO
-========================================================= */
+   ========================================================= */
 
 function home(v){
 
-let sales=db.services.reduce(
-(a,x)=>a+Number(x.total||0),0
-);
+  const sales=
+    db.services.reduce(
+      (a,x)=>a+num(x.total),
+      0
+    );
 
-let collected=db.payments.reduce(
-(a,x)=>a+Number(x.amount||0),0
-);
+  const collected=
+    db.payments.reduce(
+      (a,x)=>a+num(x.amount),
+      0
+    );
 
-let pending=db.services.reduce(
-(a,x)=>a+Math.max(0,Number(x.total||0)-paid(x.id)),
-0
-);
+  const pending=
+    db.services.reduce(
+      (a,x)=>a+Math.max(
+        0,
+        num(x.total)-paid(x.id)
+      ),
+      0
+    );
 
-let profits=db.services.reduce(
-(a,x)=>a+profit(x),
-0
-);
+  const t=totals();
 
-v.innerHTML=
-head(
-"Buenos días 👋",
-"Centro de operaciones HSM Exclusive Journeys + YHL Travels"
-)+`
+  v.innerHTML=
 
-<div class="cards">
+    head(
+      "Buenos días 👋",
+      "Centro de operaciones HSM Exclusive Journeys + YHL Travels"
+    )
 
-<div class="card">
-<div class="label">VENTAS</div>
-<div class="metric">${money(sales)}</div>
-</div>
+    +`
 
-<div class="card">
-<div class="label">COBRADO</div>
-<div class="metric">${money(collected)}</div>
-</div>
+    <div class="cards">
 
-<div class="card">
-<div class="label">PENDIENTE</div>
-<div class="metric">${money(pending)}</div>
-</div>
+      <div class="card">
+        <div class="label">VENTAS</div>
+        <div class="metric">${money(sales)}</div>
+      </div>
 
-<div class="card">
-<div class="label">GANANCIA</div>
-<div class="metric">${money(profits)}</div>
-</div>
+      <div class="card">
+        <div class="label">COBRADO</div>
+        <div class="metric">${money(collected)}</div>
+      </div>
 
-</div>
+      <div class="card">
+        <div class="label">PENDIENTE</div>
+        <div class="metric">${money(pending)}</div>
+      </div>
 
-<div class="section">
+      <div class="card">
+        <div class="label">GANANCIA</div>
+        <div class="metric">${money(t.profit)}</div>
+      </div>
 
-<h2>Acciones rápidas</h2>
+    </div>
 
-<div class="toolbar">
+    <div class="section">
 
-<button class="btn gold"
-onclick="clientForm()">
-+ Cliente
-</button>
+      <h2>Acciones rápidas</h2>
 
-<button class="btn light"
-onclick="serviceForm()">
-+ Servicio
-</button>
+      <div class="toolbar">
 
-<button class="btn light"
-onclick="paymentForm()">
-+ Pago
-</button>
+        <button
+          class="btn gold"
+          onclick="clientForm()">
+          + Cliente
+        </button>
 
-</div>
+        <button
+          class="btn light"
+          onclick="serviceForm()">
+          + Servicio
+        </button>
 
-</div>
+        <button
+          class="btn light"
+          onclick="paymentForm()">
+          + Pago
+        </button>
 
-<div class="section">
+      </div>
 
-<h2>Últimos servicios</h2>
+    </div>
 
-${serviceList(db.services.slice(-5).reverse())}
+    <div class="section">
 
-</div>
+      <h2>Resumen financiero</h2>
 
-<div class="section">
+      <div class="financial">
 
-<h2>Resumen de comisiones</h2>
+        <div class="finbox">
+          <div class="flabel">Costos servicio</div>
+          <div class="fvalue">${money(t.costs)}</div>
+        </div>
 
-${commissionMiniSummary()}
+        <div class="finbox">
+          <div class="flabel">Otros costos</div>
+          <div class="fvalue">${money(t.other)}</div>
+        </div>
 
-<button class="btn light"
-style="margin-top:10px"
-onclick="showCommissions()">
-Ver todas las comisiones
-</button>
+        <div class="finbox">
+          <div class="flabel">Comisiones gestores</div>
+          <div class="fvalue">${money(t.gestor)}</div>
+        </div>
 
-</div>
-`;
+        <div class="finbox">
+          <div class="flabel">Comisiones Yisel</div>
+          <div class="fvalue">${money(t.yisel)}</div>
+        </div>
 
+        <div class="finbox">
+          <div class="flabel">Comisiones Harold</div>
+          <div class="fvalue">${money(t.harold)}</div>
+        </div>
+
+        <div class="finbox ${t.profit>=0?"profit":"loss"}">
+          <div class="flabel">Ganancia total</div>
+          <div class="fvalue">${money(t.profit)}</div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="section">
+
+      <h2>Últimos servicios</h2>
+
+      ${serviceList(
+        db.services
+          .slice(-5)
+          .reverse()
+      )}
+
+    </div>
+  `;
 }
+
 
 /* =========================================================
    CLIENTES
-========================================================= */
+   ========================================================= */
 
 function clients(v){
 
-v.innerHTML=
-head(
-"Clientes",
-"Tu base de clientes, guardada en este dispositivo"
-)+`
+  v.innerHTML=
 
-<input
-id="q"
-class="search"
-placeholder="🔎 Buscar cliente..."
-oninput="clientSearch()">
+    head(
+      "Clientes",
+      "Tu base de clientes, guardada en este dispositivo"
+    )
 
-<div id="clist">
-${clientList(db.clients)}
-</div>
-`;
+    +`
+
+    <input
+      id="q"
+      class="search"
+      placeholder="🔎 Buscar cliente..."
+      oninput="clientSearch()">
+
+    <div id="clist">
+      ${clientList(db.clients)}
+    </div>
+  `;
 
 }
 
 function clientList(a){
 
-if(!a.length)
+  if(!a.length){
 
-return `
-<div class="empty">
-No hay clientes todavía.
-<br><br>
-<button class="btn gold"
-onclick="clientForm()">
-Crear primer cliente
-</button>
-</div>
-`;
+    return `
+      <div class="empty">
+        No hay clientes todavía.
+        <br><br>
 
-return `
-<div class="list">
+        <button
+          class="btn gold"
+          onclick="clientForm()">
+          Crear primer cliente
+        </button>
+      </div>
+    `;
 
-${a.map(x=>`
+  }
 
-<div class="item">
+  return `
+    <div class="list">
 
-<div class="itemhead">
+      ${a.map(x=>`
 
-<div>
+        <div class="item">
 
-<b>${esc(x.name)}</b>
+          <div class="itemhead">
 
-<div class="meta">
-${esc(x.phone||"Sin teléfono")}
- ·
-${esc(x.country||"Sin país")}
-</div>
+            <div>
 
-</div>
+              <b>${esc(x.name)}</b>
 
-<button class="btn light"
-onclick="clientForm('${x.id}')">
-Editar
-</button>
+              <div class="meta">
+                ${esc(x.phone||"Sin teléfono")}
+                ·
+                ${esc(x.country||"Sin país")}
+              </div>
 
-</div>
+            </div>
 
-<div class="meta">
-${esc(x.email||"Sin email")}
- ·
-${db.services.filter(s=>s.clientId===x.id).length}
- servicio(s)
-</div>
+            <button
+              class="btn light"
+              onclick="clientForm('${x.id}')">
+              Editar
+            </button>
 
-</div>
+          </div>
 
-`).join("")}
+          <div class="meta">
+            ${esc(x.email||"Sin email")}
+            ·
+            ${db.services.filter(
+              s=>s.clientId===x.id
+            ).length}
+            servicio(s)
+          </div>
 
-</div>
-`;
+        </div>
+
+      `).join("")}
+
+    </div>
+  `;
 
 }
 
 function clientSearch(){
 
-let q=document
-.getElementById("q")
-.value
-.toLowerCase();
+  let q=
+    document
+      .getElementById("q")
+      .value
+      .toLowerCase();
 
-document.getElementById("clist").innerHTML=
-clientList(
-db.clients.filter(x=>
-(x.name+" "+x.phone+" "+x.email+" "+x.country)
-.toLowerCase()
-.includes(q)
-)
-);
+  document.getElementById("clist").innerHTML=
+    clientList(
+      db.clients.filter(x=>
+        (
+          x.name+" "+
+          x.phone+" "+
+          x.email+" "+
+          x.country
+        )
+        .toLowerCase()
+        .includes(q)
+      )
+    );
 
 }
 
 function clientForm(i=""){
 
-let x=db.clients.find(a=>a.id===i)||{};
+  let x=
+    db.clients.find(a=>a.id===i)||{};
 
-openModal(
-i?"Editar cliente":"Nuevo cliente",
-`
+  openModal(
+    i?"Editar cliente":"Nuevo cliente",
 
-<form onsubmit="saveClient(event,'${i}')">
+    `
 
-<div class="formgrid">
+    <form
+      onsubmit="saveClient(event,'${i}')">
 
-<label>
-Nombre completo
-<input required name="name" value="${esc(x.name)}">
-</label>
+      <div class="formgrid">
 
-<div class="row">
+        <label>
+          Nombre completo
+          <input
+            required
+            name="name"
+            value="${esc(x.name)}">
+        </label>
 
-<label>
-WhatsApp / Teléfono
-<input name="phone" value="${esc(x.phone)}">
-</label>
+        <div class="row">
 
-<label>
-País
-<input name="country" value="${esc(x.country)}">
-</label>
+          <label>
+            WhatsApp / Teléfono
+            <input
+              name="phone"
+              value="${esc(x.phone)}">
+          </label>
 
-</div>
+          <label>
+            País
+            <input
+              name="country"
+              value="${esc(x.country)}">
+          </label>
 
-<label>
-Email
-<input type="email" name="email" value="${esc(x.email)}">
-</label>
+        </div>
 
-<label>
-Gestor
+        <label>
+          Email
+          <input
+            type="email"
+            name="email"
+            value="${esc(x.email)}">
+        </label>
 
-<select name="gestorId">
+        <label>
+          Gestor
 
-<option value="">
-Sin gestor
-</option>
+          <select name="gestorId">
 
-${db.gestors.map(g=>`
+            <option value="">
+              Sin gestor
+            </option>
 
-<option
-value="${g.id}"
-${x.gestorId===g.id?"selected":""}>
-${esc(g.name)}
-</option>
+            ${db.gestors.map(g=>`
 
-`).join("")}
+              <option
+                value="${g.id}"
+                ${x.gestorId===g.id?"selected":""}>
 
-</select>
+                ${esc(g.name)}
 
-</label>
+              </option>
 
-<label>
-Notas
-<textarea name="notes">${esc(x.notes)}</textarea>
-</label>
+            `).join("")}
 
-<button class="btn gold">
-Guardar cliente
-</button>
+          </select>
 
-</div>
+        </label>
 
-</form>
-`
-);
+        <label>
+          Notas
+          <textarea name="notes">${esc(x.notes)}</textarea>
+        </label>
+
+        <button class="btn gold">
+          Guardar cliente
+        </button>
+
+      </div>
+
+    </form>
+
+    `
+  );
 
 }
 
 function saveClient(e,i){
 
-e.preventDefault();
+  e.preventDefault();
 
-let f=new FormData(e.target);
+  let f=new FormData(e.target);
 
-let x={
-id:i||id(),
-name:f.get("name"),
-phone:f.get("phone"),
-country:f.get("country"),
-email:f.get("email"),
-gestorId:f.get("gestorId"),
-notes:f.get("notes")
-};
+  let x={
+    id:i||id(),
+    name:f.get("name"),
+    phone:f.get("phone"),
+    country:f.get("country"),
+    email:f.get("email"),
+    gestorId:f.get("gestorId"),
+    notes:f.get("notes")
+  };
 
-if(i)
+  if(i){
 
-db.clients=db.clients.map(
-a=>a.id===i?x:a
-);
+    db.clients=
+      db.clients.map(
+        a=>a.id===i?x:a
+      );
 
-else
+  }else{
 
-db.clients.push(x);
+    db.clients.push(x);
 
-save();
-closeModal();
-render();
+  }
+
+  save();
+  closeModal();
+  render();
 
 }
 
+
 /* =========================================================
    SERVICIOS
-========================================================= */
+   ========================================================= */
 
 function services(v){
 
-v.innerHTML=
-head(
-"Servicios",
-"Boletos, hoteles, visas, paquetes y más"
-)+`
+  v.innerHTML=
 
-<input
-id="sq"
-class="search"
-placeholder="🔎 Buscar servicio o cliente..."
-oninput="serviceSearch()">
+    head(
+      "Servicios",
+      "Boletos, hoteles, visas, paquetes y más"
+    )
 
-<div id="slist">
-${serviceList(db.services.slice().reverse())}
-</div>
-`;
+    +`
+
+    <input
+      id="sq"
+      class="search"
+      placeholder="🔎 Buscar servicio o cliente..."
+      oninput="serviceSearch()">
+
+    <div id="slist">
+      ${serviceList(
+        db.services.slice().reverse()
+      )}
+    </div>
+  `;
 
 }
 
 function serviceList(a){
 
-if(!a.length)
+  if(!a.length){
 
-return `
-<div class="empty">
-No hay servicios registrados.
-</div>
-`;
+    return `
+      <div class="empty">
+        No hay servicios registrados.
+      </div>
+    `;
 
-return `
-<div class="list">
+  }
 
-${a.map(s=>{
+  return `
+    <div class="list">
 
-let p=paid(s.id);
+      ${a.map(s=>{
 
-let st=
-p>=Number(s.total||0)&&Number(s.total||0)>0
-?"Pagado":
-p>0
-?"Abono":
-"Pendiente";
+        let p=paid(s.id);
 
-let pr=profit(s);
+        let st=
+          p>=num(s.total)&&num(s.total)>0
+            ?"Pagado"
+            :p>0
+              ?"Abono"
+              :"Pendiente";
 
-return `
+        let f=serviceFinancials(s);
 
-<div class="item">
+        return `
 
-<div class="itemhead">
+        <div class="item">
 
-<div>
+          <div class="itemhead">
 
-<b>${esc(cname(s.clientId))}</b>
+            <div>
 
-<div class="meta">
-${esc(s.type)}
- ·
-${esc(s.company)}
- ·
-${esc(s.date)}
-</div>
+              <b>
+                ${esc(cname(s.clientId))}
+              </b>
 
-</div>
+              <div class="meta">
+                ${esc(s.type)}
+                ·
+                ${esc(s.company)}
+                ·
+                ${esc(s.date)}
+              </div>
 
-<span class="pill ${
-st==="Pagado"?"ok":
-st==="Abono"?"warn":"red"
-}">
-${st}
-</span>
+            </div>
 
-</div>
+            <span class="pill ${
+              st==="Pagado"
+                ?"ok"
+                :st==="Abono"
+                  ?"warn"
+                  :"red"
+            }">
+              ${st}
+            </span>
 
-<div class="meta">
+          </div>
 
-<b>${money(s.total,s.currency)}</b>
+          <div class="meta">
 
- · Cobrado
-${money(p,s.currency)}
+            <b>
+              ${money(s.total,s.currency)}
+            </b>
 
- ·
-${s.passengers}
- pasajero(s)
+            · Cobrado
+            ${money(p,s.currency)}
 
- · Gestor:
-${esc(gname(s.gestorId))}
+            ·
+            ${s.passengers||1}
+            pasajero(s)
 
-</div>
+            · Gestor:
+            ${esc(gname(s.gestorId))}
 
-<div class="commission-box">
+          </div>
 
-<div class="commission-row">
-<span>Comisión gestor</span>
-<b>${money(s.gestorCommission,s.currency)}</b>
-</div>
+          <div class="financial">
 
-<div class="commission-row">
-<span>Comisión Yisel</span>
-<b>${money(s.yiselCommission,s.currency)}</b>
-</div>
+            <div class="finbox">
+              <div class="flabel">
+                Comisiones
+              </div>
 
-<div class="commission-row">
-<span>Comisión Harold</span>
-<b>${money(s.haroldCommission,s.currency)}</b>
-</div>
+              <div class="fvalue">
+                ${money(
+                  f.gestor+
+                  f.yisel+
+                  f.harold,
+                  s.currency
+                )}
+              </div>
+            </div>
 
-<div class="commission-row">
-<span>Otros costos</span>
-<b>${money(s.otherCosts,s.currency)}</b>
-</div>
+            <div class="finbox ${
+              f.profit>=0
+                ?"profit"
+                :"loss"
+            }">
 
-<div class="commission-row total">
-<span>Ganancia</span>
-<b>${money(pr,s.currency)}</b>
-</div>
+              <div class="flabel">
+                Ganancia
+              </div>
 
-</div>
+              <div class="fvalue">
+                ${money(
+                  f.profit,
+                  s.currency
+                )}
+              </div>
 
-<div style="margin-top:9px">
+            </div>
 
-<button class="btn light"
-onclick="serviceForm('${s.id}')">
-Ver / editar
-</button>
+          </div>
 
-</div>
+          <div style="margin-top:9px">
 
-</div>
+            <button
+              class="btn light"
+              onclick="serviceForm('${s.id}')">
 
-`;
+              Ver / editar
 
-}).join("")}
+            </button>
 
-</div>
-`;
+          </div>
+
+        </div>
+
+        `;
+
+      }).join("")}
+
+    </div>
+  `;
 
 }
 
 function serviceSearch(){
 
-let q=document
-.getElementById("sq")
-.value
-.toLowerCase();
+  let q=
+    document
+      .getElementById("sq")
+      .value
+      .toLowerCase();
 
-document.getElementById("slist").innerHTML=
-serviceList(
-db.services
-.filter(s=>
-(cname(s.clientId)+" "+s.type+" "+s.company)
-.toLowerCase()
-.includes(q)
-)
-.reverse()
-);
+  document.getElementById("slist").innerHTML=
+    serviceList(
+      db.services
+        .filter(s=>
+          (
+            cname(s.clientId)+" "+
+            s.type+" "+
+            s.company+" "+
+            s.date
+          )
+          .toLowerCase()
+          .includes(q)
+        )
+        .reverse()
+    );
 
 }
 
+
 /* =========================================================
-   FORMULARIO DE SERVICIO
-========================================================= */
+   FORMULARIO SERVICIO
+   ========================================================= */
 
 function serviceForm(i=""){
 
-let x=db.services.find(a=>a.id===i)||{};
+  let x=
+    db.services.find(a=>a.id===i)||{};
 
-x.gestorCommission=Number(x.gestorCommission||0);
-x.yiselCommission=Number(x.yiselCommission||0);
-x.haroldCommission=Number(x.haroldCommission||0);
-x.otherCosts=Number(x.otherCosts||0);
+  openModal(
+    i?"Editar servicio":"Nuevo servicio",
 
-let currentProfit=
-Number(x.total||0)
--
-x.gestorCommission
--
-x.yiselCommission
--
-x.haroldCommission
--
-x.otherCosts;
+    `
 
-openModal(
-i?"Editar servicio":"Nuevo servicio",
-`
+    <form
+      onsubmit="saveService(event,'${i}')">
 
-<form onsubmit="saveService(event,'${i}')">
+      <div class="formgrid">
 
-<div class="formgrid">
+        <div class="row">
 
-<div class="row">
+          <label>
+            Empresa
 
-<label>
-Empresa
+            <select name="company">
 
-<select name="company">
+              <option
+                ${x.company==="HSM"||!i?"selected":""}>
+                HSM
+              </option>
 
-<option
-${x.company==="HSM"||!i?"selected":""}>
-HSM
-</option>
+              <option
+                ${x.company==="YHL"?"selected":""}>
+                YHL
+              </option>
 
-<option
-${x.company==="YHL"?"selected":""}>
-YHL
-</option>
+            </select>
 
-</select>
+          </label>
 
-</label>
+          <label>
+            Tipo
 
-<label>
-Tipo
+            <select name="type">
 
-<select name="type">
+              ${[
+                "Boleto",
+                "Hotel",
+                "Paquete",
+                "Visa",
+                "Rent a car",
+                "Traslado",
+                "Otro"
+              ].map(t=>`
 
-${[
-"Boleto",
-"Hotel",
-"Paquete",
-"Visa",
-"Rent a car",
-"Traslado",
-"Otro"
-].map(t=>`
+                <option
+                  ${x.type===t?"selected":""}>
 
-<option
-${x.type===t?"selected":""}>
-${t}
-</option>
+                  ${t}
 
-`).join("")}
+                </option>
 
-</select>
+              `).join("")}
 
-</label>
+            </select>
 
-</div>
+          </label>
 
-<label>
-Cliente
+        </div>
 
-<select required name="clientId">
 
-<option value="">
-Seleccionar...
-</option>
+        <label>
+          Cliente
 
-${db.clients.map(c=>`
+          <select
+            required
+            name="clientId">
 
-<option
-value="${c.id}"
-${x.clientId===c.id?"selected":""}>
-${esc(c.name)}
-</option>
+            <option value="">
+              Seleccionar...
+            </option>
 
-`).join("")}
+            ${db.clients.map(c=>`
 
-</select>
+              <option
+                value="${c.id}"
+                ${x.clientId===c.id?"selected":""}>
 
-</label>
+                ${esc(c.name)}
 
-<div class="row">
+              </option>
 
-<label>
-Fecha
-<input
-type="date"
-name="date"
-value="${x.date||new Date().toISOString().slice(0,10)}">
-</label>
+            `).join("")}
 
-<label>
-Pasajeros
-<input
-type="number"
-min="1"
-name="passengers"
-value="${x.passengers||1}">
-</label>
+          </select>
 
-</div>
+        </label>
 
-<div class="row">
 
-<label>
-Valor total
-<input
-required
-type="number"
-step="0.01"
-name="total"
-value="${x.total||""}">
-</label>
+        <div class="row">
 
-<label>
-Moneda
+          <label>
+            Fecha
 
-<select name="currency">
+            <input
+              type="date"
+              name="date"
+              value="${x.date||today()}">
 
-${["USD","EUR","CUP"].map(c=>`
+          </label>
 
-<option
-${x.currency===c||
-(!x.currency&&c==="USD")
-?"selected":""}>
-${c}
-</option>
+          <label>
+            Pasajeros
 
-`).join("")}
+            <input
+              type="number"
+              min="1"
+              name="passengers"
+              value="${x.passengers||1}">
 
-</select>
+          </label>
 
-</label>
-
-</div>
-
-<div class="row">
-
-<label>
-Gestor
-
-<select name="gestorId">
-
-<option value="">
-Sin gestor
-</option>
-
-${db.gestors.map(g=>`
-
-<option
-value="${g.id}"
-${x.gestorId===g.id?"selected":""}>
-${esc(g.name)}
-</option>
-
-`).join("")}
-
-</select>
+        </div>
 
-</label>
 
-<label>
-Comisión gestor
+        <div class="row">
 
-<input
-type="number"
-step="0.01"
-name="gestorCommission"
-value="${x.gestorCommission}">
-</label>
+          <label>
+            Valor total
 
-</div>
+            <input
+              required
+              type="number"
+              step="0.01"
+              name="total"
+              value="${x.total||""}">
 
-<hr>
+          </label>
 
-<div class="note">
-Aquí puedes registrar las comisiones y costos de esta operación.
-La ganancia se calcula automáticamente.
-</div>
+          <label>
+            Moneda
 
-<div class="row">
+            <select name="currency">
 
-<label>
-Comisión Yisel
+              ${[
+                "USD",
+                "EUR",
+                "CUP"
+              ].map(c=>`
 
-<input
-type="number"
-step="0.01"
-name="yiselCommission"
-value="${x.yiselCommission}">
-</label>
+                <option
+                  ${x.currency===c ||
+                   (!x.currency&&c==="USD")
+                    ?"selected":""}>
 
-<label>
-Comisión Harold
+                  ${c}
 
-<input
-type="number"
-step="0.01"
-name="haroldCommission"
-value="${x.haroldCommission}">
-</label>
+                </option>
 
-</div>
+              `).join("")}
 
-<label>
-Otros costos
+            </select>
 
-<input
-type="number"
-step="0.01"
-name="otherCosts"
-value="${x.otherCosts}">
-</label>
+          </label>
 
-<div class="commission-box">
+        </div>
 
-<div class="commission-row">
-<span>Valor del servicio</span>
-<b id="previewTotal">
-${money(x.total||0,x.currency||"USD")}
-</b>
-</div>
 
-<div class="commission-row">
-<span>Total comisiones/costos</span>
-<b id="previewCosts">
-${money(
-x.gestorCommission+
-x.yiselCommission+
-x.haroldCommission+
-x.otherCosts,
-x.currency||"USD"
-)}
-</b>
-</div>
+        <div class="section">
 
-<div class="commission-row total">
-<span>Ganancia estimada</span>
-<b id="previewProfit">
-${money(currentProfit,x.currency||"USD")}
-</b>
-</div>
+          <h2>
+            💵 Comisiones
+          </h2>
 
-</div>
+          <div class="commission-grid">
 
-<label>
-Notas
 
-<textarea name="notes">
-${esc(x.notes)}
-</textarea>
+            <!-- GESTOR -->
 
-<button class="btn gold">
-Guardar servicio
-</button>
+            <div class="commission-row">
 
-</div>
+              <strong>
+                👤 Comisión del gestor
+              </strong>
 
-</form>
+              <div class="row">
 
-`
-);
+                <label>
+                  Tipo
+
+                  <select
+                    name="gestorCommissionType">
+
+                    <option
+                      value="fixed"
+                      ${(
+                        x.gestorCommissionType==="fixed" ||
+                        !x.gestorCommissionType
+                      )?"selected":""}>
+
+                      Monto fijo
+
+                    </option>
+
+                    <option
+                      value="percent"
+                      ${x.gestorCommissionType==="percent"
+                        ?"selected":""}>
+
+                      Porcentaje %
+
+                    </option>
+
+                  </select>
+
+                </label>
+
+                <label>
+                  Valor
+
+                  <input
+                    type="number"
+                    step="0.01"
+                    name="gestorCommissionValue"
+                    value="${
+                      x.gestorCommissionValue ??
+                      x.gestorCommission ??
+                      0
+                    }">
+
+                </label>
+
+              </div>
+
+            </div>
+
+
+            <!-- YISEL -->
+
+            <div class="commission-row">
+
+              <strong>
+                👩 Comisión Yisel
+              </strong>
+
+              <div class="row">
+
+                <label>
+                  Tipo
+
+                  <select
+                    name="yiselCommissionType">
+
+                    <option
+                      value="fixed"
+                      ${(
+                        x.yiselCommissionType==="fixed" ||
+                        !x.yiselCommissionType
+                      )?"selected":""}>
+
+                      Monto fijo
+
+                    </option>
+
+                    <option
+                      value="percent"
+                      ${x.yiselCommissionType==="percent"
+                        ?"selected":""}>
+
+                      Porcentaje %
+
+                    </option>
+
+                  </select>
+
+                </label>
+
+                <label>
+                  Valor
+
+                  <input
+                    type="number"
+                    step="0.01"
+                    name="yiselCommissionValue"
+                    value="${x.yiselCommissionValue||0}">
+
+                </label>
+
+              </div>
+
+            </div>
+
+
+            <!-- HAROLD -->
+
+            <div class="commission-row">
+
+              <strong>
+                👨 Comisión Harold
+              </strong>
+
+              <div class="row">
+
+                <label>
+                  Tipo
+
+                  <select
+                    name="haroldCommissionType">
+
+                    <option
+                      value="fixed"
+                      ${(
+                        x.haroldCommissionType==="fixed" ||
+                        !x.haroldCommissionType
+                      )?"selected":""}>
+
+                      Monto fijo
+
+                    </option>
+
+                    <option
+                      value="percent"
+                      ${x.haroldCommissionType==="percent"
+                        ?"selected":""}>
+
+                      Porcentaje %
+
+                    </option>
+
+                  </select>
+
+                </label>
+
+                <label>
+                  Valor
+
+                  <input
+                    type="number"
+                    step="0.01"
+                    name="haroldCommissionValue"
+                    value="${x.haroldCommissionValue||0}">
+
+                </label>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- COSTOS -->
+
+        <div class="section">
+
+          <h2>
+            📉 Costos
+          </h2>
+
+          <label>
+            Costo del servicio
+
+            <input
+              type="number"
+              step="0.01"
+              name="cost"
+              value="${x.cost||0}">
+
+          </label>
+
+          <label>
+            Otros costos
+
+            <input
+              type="number"
+              step="0.01"
+              name="otherCost"
+              value="${x.otherCost||0}">
+
+          </label>
+
+          <div class="note">
+            La ganancia se calcula automáticamente como:
+            <br><br>
+            <b>
+              Valor del servicio
+              − costo del servicio
+              − comisiones
+              − otros costos
+            </b>
+          </div>
+
+        </div>
+
+
+        <label>
+          Gestor
+
+          <select name="gestorId">
+
+            <option value="">
+              Sin gestor
+            </option>
+
+            ${db.gestors.map(g=>`
+
+              <option
+                value="${g.id}"
+                ${x.gestorId===g.id?"selected":""}>
+
+                ${esc(g.name)}
+
+              </option>
+
+            `).join("")}
+
+          </select>
+
+        </label>
+
+
+        <label>
+          Notas
+
+          <textarea
+            name="notes">${esc(x.notes)}</textarea>
+
+        </label>
+
+
+        <button class="btn gold">
+          Guardar servicio
+        </button>
+
+      </div>
+
+    </form>
+
+    `
+  );
 
 }
 
-/* =========================================================
-   GUARDAR SERVICIO
-========================================================= */
 
 function saveService(e,i){
 
-e.preventDefault();
+  e.preventDefault();
 
-let f=new FormData(e.target);
+  let f=new FormData(e.target);
 
-let x={
-id:i||id(),
-company:f.get("company"),
-type:f.get("type"),
-clientId:f.get("clientId"),
-date:f.get("date"),
-passengers:+f.get("passengers")||1,
-total:+f.get("total")||0,
-currency:f.get("currency"),
-gestorId:f.get("gestorId"),
+  let old=
+    db.services.find(a=>a.id===i)||{};
 
-gestorCommission:
-+f.get("gestorCommission")||0,
+  let x={
 
-yiselCommission:
-+f.get("yiselCommission")||0,
+    id:i||id(),
 
-haroldCommission:
-+f.get("haroldCommission")||0,
+    company:f.get("company"),
 
-otherCosts:
-+f.get("otherCosts")||0,
+    type:f.get("type"),
 
-notes:f.get("notes")
-};
+    clientId:f.get("clientId"),
 
-if(i)
+    date:f.get("date"),
 
-db.services=db.services.map(
-a=>a.id===i?x:a
-);
+    passengers:num(f.get("passengers"))||1,
 
-else
+    total:num(f.get("total")),
 
-db.services.push(x);
+    currency:f.get("currency"),
 
-save();
-closeModal();
-render();
+    gestorId:f.get("gestorId"),
+
+    gestorCommissionType:
+      f.get("gestorCommissionType")||"fixed",
+
+    gestorCommissionValue:
+      num(f.get("gestorCommissionValue")),
+
+    yiselCommissionType:
+      f.get("yiselCommissionType")||"fixed",
+
+    yiselCommissionValue:
+      num(f.get("yiselCommissionValue")),
+
+    haroldCommissionType:
+      f.get("haroldCommissionType")||"fixed",
+
+    haroldCommissionValue:
+      num(f.get("haroldCommissionValue")),
+
+    cost:
+      num(f.get("cost")),
+
+    otherCost:
+      num(f.get("otherCost")),
+
+    notes:
+      f.get("notes")
+
+  };
+
+  /* Mantener información adicional anterior */
+  if(old.createdAt){
+    x.createdAt=old.createdAt;
+  }else{
+    x.createdAt=new Date().toISOString();
+  }
+
+  if(i){
+
+    db.services=
+      db.services.map(
+        a=>a.id===i?x:a
+      );
+
+  }else{
+
+    db.services.push(x);
+
+  }
+
+  save();
+  closeModal();
+  render();
 
 }
+
 
 /* =========================================================
    PAGOS
-========================================================= */
+   ========================================================= */
 
 function payments(v){
 
-v.innerHTML=
-head(
-"Pagos",
-"Cobros registrados y control de saldos"
-)+`
+  v.innerHTML=
 
-<div class="toolbar">
+    head(
+      "Pagos",
+      "Cobros registrados y control de saldos"
+    )
 
-<button class="btn gold"
-onclick="paymentForm()">
-+ Registrar pago
-</button>
+    +`
 
-</div>
+    <div class="toolbar">
 
-<div class="list">
+      <button
+        class="btn gold"
+        onclick="paymentForm()">
 
-${
-db.payments
-.slice()
-.reverse()
-.map(p=>{
+        + Registrar pago
 
-let s=db.services.find(
-x=>x.id===p.serviceId
-);
+      </button>
 
-return `
+    </div>
 
-<div class="item">
+    <div class="list">
 
-<b>
-${esc(cname(s?.clientId))}
-</b>
+      ${
+        db.payments
+          .slice()
+          .reverse()
+          .map(p=>{
 
-<div class="meta">
-${esc(s?.type||"Servicio")}
- ·
-${esc(p.date)}
- ·
-${esc(p.method)}
-</div>
+            let s=
+              db.services.find(
+                x=>x.id===p.serviceId
+              );
 
-<div style="margin-top:6px;font-weight:800">
+            return `
 
-${money(p.amount,p.currency)}
+              <div class="item">
 
-</div>
+                <b>
+                  ${esc(
+                    cname(
+                      s?.clientId
+                    )
+                  )}
+                </b>
 
-</div>
+                <div class="meta">
 
-`;
+                  ${esc(
+                    s?.type||
+                    "Servicio"
+                  )}
 
-}).join("")
+                  ·
 
-||
+                  ${esc(p.date)}
 
-`
-<div class="empty">
-No hay pagos registrados.
-</div>
-`
+                  ·
 
-}
+                  ${esc(p.method)}
 
-</div>
-`;
+                </div>
+
+                <div
+                  style="
+                    margin-top:6px;
+                    font-weight:800
+                  ">
+
+                  ${money(
+                    p.amount,
+                    p.currency
+                  )}
+
+                </div>
+
+              </div>
+
+            `;
+
+          }).join("")
+          ||
+          `<div class="empty">
+            No hay pagos registrados.
+          </div>`
+      }
+
+    </div>
+  `;
 
 }
 
 function paymentForm(){
 
-openModal(
-"Registrar pago",
-`
+  openModal(
+    "Registrar pago",
 
-<form onsubmit="savePayment(event)">
+    `
 
-<div class="formgrid">
+    <form
+      onsubmit="savePayment(event)">
 
-<label>
-Servicio
+      <div class="formgrid">
 
-<select required name="serviceId">
+        <label>
+          Servicio
 
-<option value="">
-Seleccionar...
-</option>
+          <select
+            required
+            name="serviceId">
 
-${db.services.map(s=>`
+            <option value="">
+              Seleccionar...
+            </option>
 
-<option value="${s.id}">
-${esc(cname(s.clientId))}
- ·
-${esc(s.type)}
- ·
-${money(s.total,s.currency)}
-</option>
+            ${db.services.map(s=>`
 
-`).join("")}
+              <option value="${s.id}">
 
-</select>
+                ${esc(
+                  cname(s.clientId)
+                )}
 
-</label>
+                ·
 
-<div class="row">
+                ${esc(s.type)}
 
-<label>
-Fecha
+                ·
 
-<input
-type="date"
-name="date"
-value="${new Date().toISOString().slice(0,10)}">
+                ${money(
+                  s.total,
+                  s.currency
+                )}
 
-</label>
+              </option>
 
-<label>
-Importe
+            `).join("")}
 
-<input
-required
-type="number"
-step="0.01"
-name="amount">
+          </select>
 
-</label>
+        </label>
 
-</div>
 
-<div class="row">
+        <div class="row">
 
-<label>
-Moneda
+          <label>
+            Fecha
 
-<select name="currency">
-<option>USD</option>
-<option>EUR</option>
-<option>CUP</option>
-</select>
+            <input
+              type="date"
+              name="date"
+              value="${today()}">
 
-</label>
+          </label>
 
-<label>
-Método
+          <label>
+            Importe
 
-<select name="method">
-<option>Efectivo</option>
-<option>Transferencia</option>
-<option>Tarjeta</option>
-<option>Otro</option>
-</select>
+            <input
+              required
+              type="number"
+              step="0.01"
+              name="amount">
 
-</label>
+          </label>
 
-</div>
+        </div>
 
-<label>
-Nota
-<input name="note">
-</label>
 
-<button class="btn gold">
-Guardar pago
-</button>
+        <div class="row">
 
-</div>
+          <label>
+            Moneda
 
-</form>
-`
-);
+            <select name="currency">
+
+              <option>USD</option>
+              <option>EUR</option>
+              <option>CUP</option>
+
+            </select>
+
+          </label>
+
+          <label>
+            Método
+
+            <select name="method">
+
+              <option>Efectivo</option>
+              <option>Transferencia</option>
+              <option>Tarjeta</option>
+              <option>Otro</option>
+
+            </select>
+
+          </label>
+
+        </div>
+
+
+        <label>
+          Nota
+
+          <input name="note">
+
+        </label>
+
+
+        <button class="btn gold">
+          Guardar pago
+        </button>
+
+      </div>
+
+    </form>
+
+    `
+  );
 
 }
 
 function savePayment(e){
 
-e.preventDefault();
+  e.preventDefault();
 
-let f=new FormData(e.target);
+  let f=new FormData(e.target);
 
-db.payments.push({
-id:id(),
-serviceId:f.get("serviceId"),
-date:f.get("date"),
-amount:+f.get("amount"),
-currency:f.get("currency"),
-method:f.get("method"),
-note:f.get("note")
-});
+  db.payments.push({
 
-save();
-closeModal();
-render();
+    id:id(),
+
+    serviceId:
+      f.get("serviceId"),
+
+    date:
+      f.get("date"),
+
+    amount:
+      num(f.get("amount")),
+
+    currency:
+      f.get("currency"),
+
+    method:
+      f.get("method"),
+
+    note:
+      f.get("note")
+
+  });
+
+  save();
+  closeModal();
+  render();
 
 }
+
 
 /* =========================================================
-   MÁS
-========================================================= */
+   COMISIONES
+   ========================================================= */
 
-function more(v){
+function commissions(v){
 
-v.innerHTML=
-head(
-"Más",
-"Gestores, comisiones, agenda y respaldo"
-)+`
+  const t=totals();
 
-<div class="section">
+  v.innerHTML=
 
-<h2>💰 Comisiones y ganancias</h2>
+    head(
+      "💵 Comisiones",
+      "Control de comisiones y rentabilidad"
+    )
 
-<div class="meta">
-Control completo de las comisiones de cada operación.
-</div>
+    +`
 
-<button
-class="btn gold"
-style="margin-top:10px"
-onclick="showCommissions()">
-Abrir control de comisiones
-</button>
+    <div class="total-highlight">
 
-</div>
+      <div class="small">
+        GANANCIA TOTAL
+      </div>
 
-<div class="section">
+      <div class="big">
+        ${money(t.profit)}
+      </div>
 
-<h2>Gestores</h2>
+      <div class="small">
+        Después de costos, comisiones y otros gastos
+      </div>
 
-<div class="toolbar">
+    </div>
 
-<button class="btn gold"
-onclick="gestorForm()">
-+ Nuevo gestor
-</button>
 
-</div>
+    <div class="cards">
 
-<div class="list">
+      <div class="card">
 
-${
-db.gestors.map(g=>`
+        <div class="label">
+          COMISIONES GESTORES
+        </div>
 
-<div class="item">
+        <div class="metric">
+          ${money(t.gestor)}
+        </div>
 
-<div class="itemhead">
+      </div>
 
-<b>${esc(g.name)}</b>
 
-<button
-class="btn light"
-onclick="gestorForm('${g.id}')">
-Editar
-</button>
+      <div class="card">
 
-</div>
+        <div class="label">
+          COMISIÓN YISEL
+        </div>
 
-<div class="meta">
+        <div class="metric">
+          ${money(t.yisel)}
+        </div>
 
-${esc(g.phone||"Sin teléfono")}
- · Comisión predeterminada:
-${g.rate||0}%
+      </div>
 
-</div>
 
-</div>
+      <div class="card">
 
-`).join("")
+        <div class="label">
+          COMISIÓN HAROLD
+        </div>
 
-||
+        <div class="metric">
+          ${money(t.harold)}
+        </div>
 
-`
-<div class="empty">
-No hay gestores.
-</div>
-`
+      </div>
+
+
+      <div class="card">
+
+        <div class="label">
+          OTROS COSTOS
+        </div>
+
+        <div class="metric">
+          ${money(t.other)}
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="section">
+
+      <h2>
+        👤 Comisiones por gestor
+      </h2>
+
+      ${
+        db.gestors.length
+        ?
+        `<div class="list">
+
+          ${db.gestors.map(g=>{
+
+            let total=0;
+            let services=0;
+
+            db.services.forEach(s=>{
+
+              if(s.gestorId===g.id){
+
+                total+=
+                  commissionAmount(
+                    s,
+                    "gestor"
+                  );
+
+                services++;
+
+              }
+
+            });
+
+            return `
+
+              <div class="item">
+
+                <div class="itemhead">
+
+                  <div>
+
+                    <b>
+                      ${esc(g.name)}
+                    </b>
+
+                    <div class="meta">
+                      ${services}
+                      servicio(s)
+                    </div>
+
+                  </div>
+
+                  <span class="pill ok">
+                    ${money(total)}
+                  </span>
+
+                </div>
+
+              </div>
+
+            `;
+
+          }).join("")}
+
+        </div>`
+
+        :
+
+        `<div class="empty">
+          No hay gestores registrados.
+        </div>`
+      }
+
+    </div>
+
+
+    <div class="section">
+
+      <h2>
+        📋 Detalle por servicio
+      </h2>
+
+      ${
+        db.services.length
+        ?
+
+        `<div class="list">
+
+          ${db.services
+            .slice()
+            .reverse()
+            .map(s=>{
+
+              const f=
+                serviceFinancials(s);
+
+              return `
+
+                <div class="item">
+
+                  <div class="itemhead">
+
+                    <div>
+
+                      <b>
+                        ${esc(
+                          cname(s.clientId)
+                        )}
+                      </b>
+
+                      <div class="meta">
+                        ${esc(s.type)}
+                        ·
+                        ${esc(s.date)}
+                      </div>
+
+                    </div>
+
+                    <button
+                      class="btn light"
+                      onclick="serviceForm('${s.id}')">
+
+                      Editar
+
+                    </button>
+
+                  </div>
+
+
+                  <div class="financial">
+
+                    <div class="finbox">
+
+                      <div class="flabel">
+                        Gestor
+                      </div>
+
+                      <div class="fvalue">
+                        ${money(
+                          f.gestor,
+                          s.currency
+                        )}
+                      </div>
+
+                    </div>
+
+
+                    <div class="finbox">
+
+                      <div class="flabel">
+                        Yisel
+                      </div>
+
+                      <div class="fvalue">
+                        ${money(
+                          f.yisel,
+                          s.currency
+                        )}
+                      </div>
+
+                    </div>
+
+
+                    <div class="finbox">
+
+                      <div class="flabel">
+                        Harold
+                      </div>
+
+                      <div class="fvalue">
+                        ${money(
+                          f.harold,
+                          s.currency
+                        )}
+                      </div>
+
+                    </div>
+
+
+                    <div class="finbox">
+
+                      <div class="flabel">
+                        Otros costos
+                      </div>
+
+                      <div class="fvalue">
+                        ${money(
+                          f.other,
+                          s.currency
+                        )}
+                      </div>
+
+                    </div>
+
+
+                    <div class="finbox ${
+                      f.profit>=0
+                        ?"profit"
+                        :"loss"
+                    }">
+
+                      <div class="flabel">
+                        Ganancia
+                      </div>
+
+                      <div class="fvalue">
+                        ${money(
+                          f.profit,
+                          s.currency
+                        )}
+                      </div>
+
+                    </div>
+
+                  </div>
+
+                </div>
+
+              `;
+
+            }).join("")}
+
+        </div>`
+
+        :
+
+        `<div class="empty">
+          No hay servicios registrados.
+        </div>`
+      }
+
+    </div>
+
+
+    <div class="section">
+
+      <h2>
+        📊 Resumen general
+      </h2>
+
+      <div class="financial">
+
+        <div class="finbox">
+          <div class="flabel">
+            Ventas
+          </div>
+          <div class="fvalue">
+            ${money(t.sales)}
+          </div>
+        </div>
+
+        <div class="finbox">
+          <div class="flabel">
+            Costos de servicio
+          </div>
+          <div class="fvalue">
+            ${money(t.costs)}
+          </div>
+        </div>
+
+        <div class="finbox">
+          <div class="flabel">
+            Gestores
+          </div>
+          <div class="fvalue">
+            ${money(t.gestor)}
+          </div>
+        </div>
+
+        <div class="finbox">
+          <div class="flabel">
+            Yisel
+          </div>
+          <div class="fvalue">
+            ${money(t.yisel)}
+          </div>
+        </div>
+
+        <div class="finbox">
+          <div class="flabel">
+            Harold
+          </div>
+          <div class="fvalue">
+            ${money(t.harold)}
+          </div>
+        </div>
+
+        <div class="finbox">
+          <div class="flabel">
+            Otros costos
+          </div>
+          <div class="fvalue">
+            ${money(t.other)}
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  `;
 
 }
 
-</div>
-
-</div>
-
-<div class="section">
-
-<h2>Agenda</h2>
-
-<button
-class="btn light"
-onclick="taskForm()">
-+ Nueva tarea
-</button>
-
-<div
-class="list"
-style="margin-top:10px">
-
-${
-db.tasks
-.sort((a,b)=>a.date.localeCompare(b.date))
-.map(t=>`
-
-<div class="item">
-
-<b>${esc(t.title)}</b>
-
-<div class="meta">
-${esc(t.date)}
- ·
-${esc(gname(t.gestorId))}
-</div>
-
-<button
-class="btn ${t.done?"light":"gold"}"
-style="margin-top:8px"
-onclick="toggleTask('${t.id}')">
-
-${t.done?"Reabrir":"Completar"}
-
-</button>
-
-</div>
-
-`).join("")
-
-||
-
-`
-<div class="empty">
-No hay tareas.
-</div>
-`
-
-}
-
-</div>
-
-</div>
-
-<div class="section">
-
-<h2>Respaldo</h2>
-
-<div class="note">
-
-Los datos se guardan en este iPhone.
-Exporta un respaldo con frecuencia y guárdalo en Archivos/iCloud.
-
-</div>
-
-<div
-class="toolbar"
-style="margin-top:10px">
-
-<button
-class="btn gold"
-onclick="exportData()">
-⬇ Exportar
-</button>
-
-<button
-class="btn light"
-onclick="document.getElementById('imp').click()">
-⬆ Importar
-</button>
-
-<input
-id="imp"
-class="hidden"
-type="file"
-accept=".json"
-onchange="importData(event)">
-
-</div>
-
-</div>
-
-<div class="section">
-
-<h2>Resumen</h2>
-
-<div class="meta">
-
-${db.clients.length} clientes
- ·
-${db.services.length} servicios
- ·
-${db.payments.length} pagos
- ·
-${db.gestors.length} gestores
-
-</div>
-
-</div>
-`;
-
-}
-
-/* =========================================================
-   MÓDULO DE COMISIONES
-========================================================= */
-
-function commissionMiniSummary(){
-
-let result={};
-
-db.services.forEach(s=>{
-
-let c=s.currency||"USD";
-
-if(!result[c])
-
-result[c]={
-gestor:0,
-yisel:0,
-harold:0,
-other:0,
-profit:0
-};
-
-result[c].gestor+=Number(s.gestorCommission||0);
-result[c].yisel+=Number(s.yiselCommission||0);
-result[c].harold+=Number(s.haroldCommission||0);
-result[c].other+=Number(s.otherCosts||0);
-result[c].profit+=profit(s);
-
-});
-
-let currencies=Object.keys(result);
-
-if(!currencies.length)
-
-return `
-<div class="empty">
-Todavía no hay comisiones registradas.
-</div>
-`;
-
-return currencies.map(c=>`
-
-<div class="commission-box">
-
-<b>${c}</b>
-
-<div class="commission-row">
-<span>Gestores</span>
-<b>${money(result[c].gestor,c)}</b>
-</div>
-
-<div class="commission-row">
-<span>Yisel</span>
-<b>${money(result[c].yisel,c)}</b>
-</div>
-
-<div class="commission-row">
-<span>Harold</span>
-<b>${money(result[c].harold,c)}</b>
-</div>
-
-<div class="commission-row">
-<span>Otros costos</span>
-<b>${money(result[c].other,c)}</b>
-</div>
-
-<div class="commission-row total">
-<span>Ganancia</span>
-<b>${money(result[c].profit,c)}</b>
-</div>
-
-</div>
-
-`).join("");
-
-}
-
-/* =========================================================
-   PANTALLA COMPLETA DE COMISIONES
-========================================================= */
-
-function showCommissions(){
-
-let byPerson={};
-let byCurrency={};
-
-db.services.forEach(s=>{
-
-let c=s.currency||"USD";
-
-if(!byCurrency[c])
-
-byCurrency[c]={
-sales:0,
-gestor:0,
-yisel:0,
-harold:0,
-other:0,
-profit:0
-};
-
-byCurrency[c].sales+=Number(s.total||0);
-byCurrency[c].gestor+=Number(s.gestorCommission||0);
-byCurrency[c].yisel+=Number(s.yiselCommission||0);
-byCurrency[c].harold+=Number(s.haroldCommission||0);
-byCurrency[c].other+=Number(s.otherCosts||0);
-byCurrency[c].profit+=profit(s);
-
-let gestor=s.gestorId;
-
-if(gestor){
-
-let name=gname(gestor);
-
-if(!byPerson[name])
-byPerson[name]={};
-
-if(!byPerson[name][c])
-byPerson[name][c]=0;
-
-byPerson[name][c]+=Number(
-s.gestorCommission||0
-);
-
-}
-
-});
-
-let currencies=Object.keys(byCurrency);
-
-openModal(
-"💰 Comisiones y ganancias",
-`
-
-<div class="formgrid">
-
-<div class="section">
-
-<h2>Resumen general</h2>
-
-${currencies.map(c=>`
-
-<div class="commission-box">
-
-<div class="statgrid">
-
-<div class="stat">
-<div class="label">VENTAS</div>
-<div class="big">
-${money(byCurrency[c].sales,c)}
-</div>
-</div>
-
-<div class="stat">
-<div class="label">COMISIONES</div>
-<div class="big">
-${money(
-byCurrency[c].gestor+
-byCurrency[c].yisel+
-byCurrency[c].harold,
-c
-)}
-</div>
-</div>
-
-<div class="stat">
-<div class="label">OTROS COSTOS</div>
-<div class="big">
-${money(byCurrency[c].other,c)}
-</div>
-</div>
-
-<div class="stat">
-<div class="label">GANANCIA</div>
-<div class="big">
-${money(byCurrency[c].profit,c)}
-</div>
-</div>
-
-</div>
-
-</div>
-
-`).join("")||
-
-`
-<div class="empty">
-No hay servicios registrados.
-</div>
-`
-
-</div>
-
-<div class="section">
-
-<h2>Comisiones por persona</h2>
-
-${currencies.map(c=>`
-
-<div class="commission-box">
-
-<b>Gestores — ${c}</b>
-
-${
-Object.keys(byPerson)
-.filter(name=>byPerson[name][c])
-.map(name=>`
-
-<div class="commission-row">
-
-<span>${esc(name)}</span>
-
-<b>
-${money(byPerson[name][c],c)}
-</b>
-
-</div>
-
-`).join("")
-
-||
-
-`
-<div class="meta">
-No hay comisiones de gestores en ${c}.
-</div>
-`
-
-}
-
-<div class="commission-row total">
-
-<span>Yisel</span>
-
-<b>
-${money(byCurrency[c].yisel,c)}
-</b>
-
-</div>
-
-<div class="commission-row total">
-
-<span>Harold</span>
-
-<b>
-${money(byCurrency[c].harold,c)}
-</b>
-
-</div>
-
-</div>
-
-`).join("")}
-
-</div>
-
-<div class="section">
-
-<h2>Detalle de servicios</h2>
-
-<div class="list">
-
-${
-db.services
-.slice()
-.reverse()
-.map(s=>`
-
-<div class="item">
-
-<b>
-${esc(cname(s.clientId))}
-</b>
-
-<div class="meta">
-${esc(s.type)}
- ·
-${esc(s.date)}
-</div>
-
-<div class="commission-row">
-<span>Servicio</span>
-<b>${money(s.total,s.currency)}</b>
-</div>
-
-<div class="commission-row">
-<span>Gestor</span>
-<b>${money(s.gestorCommission,s.currency)}</b>
-</div>
-
-<div class="commission-row">
-<span>Yisel</span>
-<b>${money(s.yiselCommission,s.currency)}</b>
-</div>
-
-<div class="commission-row">
-<span>Harold</span>
-<b>${money(s.haroldCommission,s.currency)}</b>
-</div>
-
-<div class="commission-row">
-<span>Otros costos</span>
-<b>${money(s.otherCosts,s.currency)}</b>
-</div>
-
-<div class="commission-row total">
-
-<span>Ganancia</span>
-
-<b class="profit">
-${money(profit(s),s.currency)}
-</b>
-
-</div>
-
-</div>
-
-`).join("")
-
-||
-
-`
-<div class="empty">
-No hay servicios registrados.
-</div>
-`
-
-}
-
-</div>
-
-</div>
-
-</div>
-`
-);
-
-}
 
 /* =========================================================
    GESTORES
-========================================================= */
+   ========================================================= */
 
 function gestorForm(i=""){
 
-let x=db.gestors.find(a=>a.id===i)||{};
+  let x=
+    db.gestors.find(
+      a=>a.id===i
+    )||{};
 
-openModal(
-i?"Editar gestor":"Nuevo gestor",
-`
+  openModal(
 
-<form onsubmit="saveGestor(event,'${i}')">
+    i
+      ?"Editar gestor"
+      :"Nuevo gestor",
 
-<div class="formgrid">
+    `
 
-<label>
-Nombre
-<input
-required
-name="name"
-value="${esc(x.name)}">
-</label>
+    <form
+      onsubmit="saveGestor(event,'${i}')">
 
-<label>
-Teléfono
-<input
-name="phone"
-value="${esc(x.phone)}">
-</label>
+      <div class="formgrid">
 
-<label>
-Comisión predeterminada (%)
-<input
-type="number"
-step=".01"
-name="rate"
-value="${x.rate||0}">
-</label>
+        <label>
+          Nombre
 
-<button class="btn gold">
-Guardar gestor
-</button>
+          <input
+            required
+            name="name"
+            value="${esc(x.name)}">
 
-</div>
+        </label>
 
-</form>
-`
-);
+
+        <label>
+          Teléfono
+
+          <input
+            name="phone"
+            value="${esc(x.phone)}">
+
+        </label>
+
+
+        <div class="section">
+
+          <h2>
+            Comisión predeterminada
+          </h2>
+
+          <div class="row">
+
+            <label>
+              Tipo
+
+              <select
+                name="defaultCommissionType">
+
+                <option
+                  value="fixed"
+                  ${
+                    x.defaultCommissionType==="fixed" ||
+                    !x.defaultCommissionType
+                      ?"selected"
+                      :""
+                  }>
+
+                  Monto fijo
+
+                </option>
+
+                <option
+                  value="percent"
+                  ${
+                    x.defaultCommissionType==="percent"
+                      ?"selected"
+                      :""
+                  }>
+
+                  Porcentaje %
+
+                </option>
+
+              </select>
+
+            </label>
+
+
+            <label>
+              Valor
+
+              <input
+                type="number"
+                step="0.01"
+                name="rate"
+                value="${
+                  x.rate||0
+                }">
+
+            </label>
+
+          </div>
+
+          <div class="note">
+            Esta comisión queda como
+            referencia para futuros servicios.
+            La comisión de cada servicio puede
+            modificarse individualmente.
+          </div>
+
+        </div>
+
+
+        <button class="btn gold">
+          Guardar gestor
+        </button>
+
+      </div>
+
+    </form>
+
+    `
+  );
 
 }
 
 function saveGestor(e,i){
 
-e.preventDefault();
+  e.preventDefault();
 
-let f=new FormData(e.target);
+  let f=new FormData(e.target);
 
-let x={
-id:i||id(),
-name:f.get("name"),
-phone:f.get("phone"),
-rate:+f.get("rate")||0
-};
+  let x={
 
-if(i)
+    id:i||id(),
 
-db.gestors=db.gestors.map(
-a=>a.id===i?x:a
-);
+    name:
+      f.get("name"),
 
-else
+    phone:
+      f.get("phone"),
 
-db.gestors.push(x);
+    rate:
+      num(f.get("rate")),
 
-save();
-closeModal();
-render();
+    defaultCommissionType:
+      f.get("defaultCommissionType")||
+      "fixed"
+
+  };
+
+  if(i){
+
+    db.gestors=
+      db.gestors.map(
+        a=>a.id===i?x:a
+      );
+
+  }else{
+
+    db.gestors.push(x);
+
+  }
+
+  save();
+  closeModal();
+  render();
 
 }
 
+
 /* =========================================================
-   TAREAS
-========================================================= */
+   MÁS
+   ========================================================= */
+
+function more(v){
+
+  v.innerHTML=
+
+    head(
+      "Más",
+      "Gestores, agenda y respaldo"
+    )
+
+    +`
+
+    <div class="section">
+
+      <h2>
+        Gestores
+      </h2>
+
+      <div class="toolbar">
+
+        <button
+          class="btn gold"
+          onclick="gestorForm()">
+
+          + Nuevo gestor
+
+        </button>
+
+      </div>
+
+      <div class="list">
+
+        ${
+          db.gestors.map(g=>`
+
+            <div class="item">
+
+              <div class="itemhead">
+
+                <b>
+                  ${esc(g.name)}
+                </b>
+
+                <button
+                  class="btn light"
+                  onclick="gestorForm('${g.id}')">
+
+                  Editar
+
+                </button>
+
+              </div>
+
+              <div class="meta">
+
+                ${esc(
+                  g.phone||
+                  "Sin teléfono"
+                )}
+
+                · Comisión:
+                ${
+                  g.defaultCommissionType==="percent"
+                    ?(g.rate||0)+"%"
+                    :money(g.rate||0)
+                }
+
+              </div>
+
+            </div>
+
+          `).join("")
+          ||
+          `<div class="empty">
+            No hay gestores.
+          </div>`
+        }
+
+      </div>
+
+    </div>
+
+
+    <div class="section">
+
+      <h2>
+        Agenda
+      </h2>
+
+      <button
+        class="btn light"
+        onclick="taskForm()">
+
+        + Nueva tarea
+
+      </button>
+
+      <div
+        class="list"
+        style="margin-top:10px">
+
+        ${
+          db.tasks
+            .slice()
+            .sort(
+              (a,b)=>
+                String(a.date)
+                .localeCompare(
+                  String(b.date)
+                )
+            )
+            .map(t=>`
+
+              <div class="item">
+
+                <b>
+                  ${esc(t.title)}
+                </b>
+
+                <div class="meta">
+                  ${esc(t.date)}
+                  ·
+                  ${esc(
+                    gname(
+                      t.gestorId
+                    )
+                  )}
+                </div>
+
+                <button
+                  class="btn ${
+                    t.done
+                      ?"light"
+                      :"gold"
+                  }"
+                  style="margin-top:8px"
+                  onclick="toggleTask('${t.id}')">
+
+                  ${
+                    t.done
+                      ?"Reabrir"
+                      :"Completar"
+                  }
+
+                </button>
+
+              </div>
+
+            `).join("")
+            ||
+            `<div class="empty">
+              No hay tareas.
+            </div>`
+        }
+
+      </div>
+
+    </div>
+
+
+    <div class="section">
+
+      <h2>
+        Respaldo
+      </h2>
+
+      <div class="note">
+
+        Los datos se guardan en este dispositivo.
+        Exporta un respaldo con frecuencia y
+        guárdalo en Archivos/iCloud.
+
+      </div>
+
+      <div
+        class="toolbar"
+        style="margin-top:10px">
+
+        <button
+          class="btn gold"
+          onclick="exportData()">
+
+          ⬇ Exportar
+
+        </button>
+
+        <button
+          class="btn light"
+          onclick="
+            document
+              .getElementById('imp')
+              .click()
+          ">
+
+          ⬆ Importar
+
+        </button>
+
+        <input
+          id="imp"
+          class="hidden"
+          type="file"
+          accept=".json"
+          onchange="importData(event)">
+
+      </div>
+
+    </div>
+
+
+    <div class="section">
+
+      <h2>
+        Resumen
+      </h2>
+
+      <div class="meta">
+
+        ${db.clients.length}
+        clientes
+
+        ·
+
+        ${db.services.length}
+        servicios
+
+        ·
+
+        ${db.payments.length}
+        pagos
+
+        ·
+
+        ${db.gestors.length}
+        gestores
+
+      </div>
+
+    </div>
+
+  `;
+
+}
+
+
+/* =========================================================
+   AGENDA
+   ========================================================= */
 
 function taskForm(){
 
-openModal(
-"Nueva tarea",
-`
+  openModal(
 
-<form onsubmit="saveTask(event)">
+    "Nueva tarea",
 
-<div class="formgrid">
+    `
 
-<label>
-Tarea
-<input required name="title">
-</label>
+    <form
+      onsubmit="saveTask(event)">
 
-<div class="row">
+      <div class="formgrid">
 
-<label>
-Fecha
+        <label>
+          Tarea
 
-<input
-type="date"
-name="date"
-value="${new Date().toISOString().slice(0,10)}">
+          <input
+            required
+            name="title">
 
-</label>
+        </label>
 
-<label>
-Responsable
 
-<select name="gestorId">
+        <div class="row">
 
-<option value="">
-Sin asignar
-</option>
+          <label>
+            Fecha
 
-${db.gestors.map(g=>`
+            <input
+              type="date"
+              name="date"
+              value="${today()}">
 
-<option value="${g.id}">
-${esc(g.name)}
-</option>
+          </label>
 
-`).join("")}
 
-</select>
+          <label>
+            Responsable
 
-</label>
+            <select name="gestorId">
 
-</div>
+              <option value="">
+                Sin asignar
+              </option>
 
-<button class="btn gold">
-Guardar
-</button>
+              ${db.gestors.map(g=>`
 
-</div>
+                <option value="${g.id}">
 
-</form>
-`
-);
+                  ${esc(g.name)}
+
+                </option>
+
+              `).join("")}
+
+            </select>
+
+          </label>
+
+        </div>
+
+
+        <button class="btn gold">
+          Guardar
+        </button>
+
+      </div>
+
+    </form>
+
+    `
+  );
 
 }
 
 function saveTask(e){
 
-e.preventDefault();
+  e.preventDefault();
 
-let f=new FormData(e.target);
+  let f=new FormData(e.target);
 
-db.tasks.push({
-id:id(),
-title:f.get("title"),
-date:f.get("date"),
-gestorId:f.get("gestorId"),
-done:false
-});
+  db.tasks.push({
 
-save();
-closeModal();
-render();
+    id:id(),
+
+    title:
+      f.get("title"),
+
+    date:
+      f.get("date"),
+
+    gestorId:
+      f.get("gestorId"),
+
+    done:false
+
+  });
+
+  save();
+  closeModal();
+  render();
 
 }
 
 function toggleTask(i){
 
-let t=db.tasks.find(x=>x.id===i);
+  let t=
+    db.tasks.find(
+      x=>x.id===i
+    );
 
-if(t)
-t.done=!t.done;
+  if(!t)return;
 
-save();
-render();
+  t.done=!t.done;
+
+  save();
+  render();
 
 }
 
+
 /* =========================================================
-   RESPALDO
-========================================================= */
+   EXPORTAR / IMPORTAR
+   ========================================================= */
 
 function exportData(){
 
-let b=new Blob(
-[JSON.stringify(db,null,2)],
-{type:"application/json"}
-);
+  let b=new Blob(
+    [
+      JSON.stringify(
+        db,
+        null,
+        2
+      )
+    ],
+    {
+      type:"application/json"
+    }
+  );
 
-let a=document.createElement("a");
+  let a=
+    document.createElement("a");
 
-a.href=URL.createObjectURL(b);
+  a.href=
+    URL.createObjectURL(b);
 
-a.download=
-"HSM-YHL-CRM-"+
-new Date().toISOString().slice(0,10)+
-".json";
+  a.download=
+    "HSM-YHL-CRM-"+
+    today()+
+    ".json";
 
-a.click();
+  a.click();
 
-setTimeout(
-()=>URL.revokeObjectURL(a.href),
-1000
-);
+  setTimeout(
+    ()=>URL.revokeObjectURL(a.href),
+    1000
+  );
 
 }
 
 function importData(e){
 
-let f=e.target.files[0];
+  let f=
+    e.target.files[0];
 
-if(!f)return;
+  if(!f)return;
 
-let r=new FileReader();
+  let r=
+    new FileReader();
 
-r.onload=()=>{
+  r.onload=()=>{
 
-try{
+    try{
 
-let x=JSON.parse(r.result);
+      let x=
+        JSON.parse(
+          r.result
+        );
 
-if(!x.clients||
-!x.services||
-!x.payments)
-throw 0;
+      if(
+        !x.clients ||
+        !x.services ||
+        !x.payments
+      ){
+        throw 0;
+      }
 
-x.gestors=x.gestors||[];
-x.tasks=x.tasks||[];
+      db=x;
 
-x.services=x.services.map(s=>({
-...s,
-gestorCommission:
-Number(s.gestorCommission||0),
+      db.clients=
+        db.clients||[];
 
-yiselCommission:
-Number(s.yiselCommission||0),
+      db.services=
+        db.services||[];
 
-haroldCommission:
-Number(s.haroldCommission||0),
+      db.payments=
+        db.payments||[];
 
-otherCosts:
-Number(s.otherCosts||0)
-}));
+      db.gestors=
+        db.gestors||[];
 
-db=x;
+      db.tasks=
+        db.tasks||[];
 
-save();
-render();
+      save();
 
-alert(
-"Respaldo restaurado correctamente."
-);
+      render();
 
-}catch{
+      alert(
+        "Respaldo restaurado correctamente."
+      );
 
-alert(
-"Respaldo no válido."
-);
+    }catch{
+
+      alert(
+        "Respaldo no válido."
+      );
+
+    }
+
+  };
+
+  r.readAsText(f);
 
 }
 
-};
-
-r.readAsText(f);
-
-}
 
 /* =========================================================
    MODAL
-========================================================= */
+   ========================================================= */
 
 function openModal(t,b){
 
-document.getElementById("mtitle")
-.textContent=t;
+  document
+    .getElementById("mtitle")
+    .textContent=t;
 
-document.getElementById("mbody")
-.innerHTML=b;
+  document
+    .getElementById("mbody")
+    .innerHTML=b;
 
-document.getElementById("modal")
-.classList.add("open");
+  document
+    .getElementById("modal")
+    .classList.add("open");
 
 }
 
 function closeModal(){
 
-document.getElementById("modal")
-.classList.remove("open");
+  document
+    .getElementById("modal")
+    .classList.remove("open");
 
 }
 
+
+/* Cerrar tocando fuera */
+
+document
+  .getElementById("modal")
+  .addEventListener(
+    "click",
+    e=>{
+      if(e.target.id==="modal"){
+        closeModal();
+      }
+    }
+  );
+
+
 /* =========================================================
    INICIO
-========================================================= */
+   ========================================================= */
 
 render();
 
